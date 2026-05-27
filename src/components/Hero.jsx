@@ -1,186 +1,218 @@
 import { motion } from "framer-motion";
+import heroPhoto from "../assets/Personal Pics.png";
 
-const containerVariants = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.15 } },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
-};
-
-const floatVariants = {
-  animate: {
-    y: [0, -14, 0],
-    transition: { duration: 4, repeat: Infinity, ease: "easeInOut" },
-  },
+const cardStyle = {
+  background: "#161616",
+  border: "1px solid #242424",
+  borderRadius: "14px",
+  padding: "20px 24px",
 };
 
 export default function Hero() {
   return (
     <section
       id="hero"
-      className="min-h-screen flex items-center relative overflow-hidden"
-      style={{ background: "var(--bg-primary)", paddingTop: "100px" }}
+      style={{
+        background: "var(--bg-primary)",
+        minHeight: "100vh",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        padding: "108px 20px 40px",
+      }}
     >
-      {/* Background glow */}
-      <div
-        className="absolute top-1/2 right-1/4 -translate-y-1/2 w-96 h-96 rounded-full pointer-events-none"
+      {/* Outer card */}
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
         style={{
-          background: "radial-gradient(circle, rgba(74,222,128,0.07) 0%, transparent 70%)",
-          filter: "blur(60px)",
+          width: "100%",
+          maxWidth: "984px",
+          background: "#0f0f0f",
+          border: "1px solid #222222",
+          borderRadius: "20px",
+          padding: "20px",
+          display: "grid",
+          gridTemplateColumns: "1fr 1fr",
+          gap: "16px",
+          minHeight: "591px",
         }}
-      />
+      >
+        {/* ── LEFT COLUMN ── */}
+        <div style={{ display: "flex", flexDirection: "column", gap: "14px" }}>
 
-      <div className="max-w-7xl mx-auto px-6 w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-        {/* LEFT COLUMN */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-          className="flex flex-col gap-6"
-        >
-          {/* Badge */}
-          <motion.div variants={itemVariants}>
-            <span
-              className="inline-flex items-center gap-2 text-sm font-medium px-4 py-2 rounded-full"
-              style={{
-                background: "#1a1a1a",
-                color: "#cccccc",
-                border: "1px solid #2a2a2a",
-                fontFamily: "var(--font-body)",
-              }}
-            >
-              👋 Hello, I am Damilola Dada
-            </span>
-          </motion.div>
-
-          {/* Headline */}
-          <motion.h1
-            variants={itemVariants}
-            className="leading-tight"
-            style={{
-              fontFamily: "var(--font-display)",
-              fontSize: "clamp(2.8rem, 6vw, 4.5rem)",
-              fontWeight: 800,
-              color: "var(--text-primary)",
-              lineHeight: 1.05,
-            }}
-          >
-            I Design the{" "}
-            <span style={{ color: "var(--accent)" }}>Future!</span>
-          </motion.h1>
-
-          {/* Subtext */}
-          <motion.p
-            variants={itemVariants}
-            className="text-base md:text-lg leading-relaxed max-w-md"
-            style={{ color: "var(--text-muted)", fontFamily: "var(--font-body)" }}
-          >
-            I'm a UI/UX designer with 4+ years of experience crafting intuitive digital
-            experiences that bridge the gap between business goals and user needs —
-            from research and wireframes to pixel-perfect, production-ready interfaces.
-          </motion.p>
-
-          {/* CTA Buttons */}
-          <motion.div variants={itemVariants} className="flex flex-wrap gap-4">
-            <a
-              href="#contact"
-              onClick={(e) => {
-                e.preventDefault();
-                document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
-              }}
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-semibold border transition-all duration-200 hover:bg-white/5"
-              style={{
-                border: "1.5px solid #444",
-                color: "var(--text-primary)",
-                fontFamily: "var(--font-body)",
-              }}
-            >
-              ✦ Available for Hire
-            </a>
-            <a
-              href="#contact"
-              onClick={(e) => {
-                e.preventDefault();
-                document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
-              }}
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-semibold transition-all duration-200 hover:opacity-90 hover:scale-105"
-              style={{
-                background: "var(--accent)",
-                color: "#0a0a0a",
-                fontFamily: "var(--font-body)",
-              }}
-            >
-              Let's Connect
-            </a>
-          </motion.div>
-
-          {/* Stats */}
-          <motion.div variants={itemVariants} className="flex gap-8 pt-2">
-            {[
-              { value: "4+", label: "Years Experience" },
-              { value: "30+", label: "Projects Delivered" },
-              { value: "15+", label: "Happy Clients" },
-            ].map((stat) => (
-              <div key={stat.label}>
-                <p
-                  className="text-2xl font-bold"
-                  style={{ fontFamily: "var(--font-display)", color: "var(--text-primary)" }}
-                >
-                  {stat.value}
-                </p>
-                <p className="text-xs mt-0.5" style={{ color: "var(--text-muted)" }}>
-                  {stat.label}
-                </p>
-              </div>
-            ))}
-          </motion.div>
-        </motion.div>
-
-        {/* RIGHT COLUMN — Profile Photo */}
-        <div className="flex justify-center items-center relative">
-          {/* Glow blob behind photo */}
-          <div
-            className="absolute w-80 h-80 rounded-full pointer-events-none"
-            style={{
-              background: "radial-gradient(circle, rgba(74,222,128,0.15) 0%, transparent 70%)",
-              filter: "blur(40px)",
-            }}
-          />
-
+          {/* Card 1 — Greeting */}
           <motion.div
-            variants={floatVariants}
-            animate="animate"
-            className="relative z-10"
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, delay: 0.15 }}
+            style={cardStyle}
           >
-            {/* Decorative ring */}
-            <div
-              className="absolute -inset-3 rounded-full"
-              style={{
-                background: "conic-gradient(from 0deg, #4ade80, transparent, #4ade80, transparent)",
-                borderRadius: "50%",
-                padding: "2px",
-                opacity: 0.4,
-              }}
-            />
-            <div
-              className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden relative"
-              style={{
-                border: "2px solid #222",
-                background: "#111",
-              }}
-            >
-              <img
-                src="https://placehold.co/400x400/111111/4ade80?text=DD"
-                alt="Damilola Dada"
-                className="w-full h-full object-cover"
-              />
+            <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+              <span
+                style={{
+                  fontSize: "22px",
+                  background: "#2a2200",
+                  borderRadius: "50%",
+                  width: "42px",
+                  height: "42px",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  flexShrink: 0,
+                }}
+              >
+                🤚
+              </span>
+              <h2
+                style={{
+                  fontFamily: "var(--font-display)",
+                  fontSize: "18px",
+                  fontWeight: 200,
+                  color: "#ffffff",
+                  margin: 0,
+                  lineHeight: 1.2,
+                }}
+              >
+                Hello, I am Damilola Dada
+              </h2>
             </div>
           </motion.div>
+
+          {/* Card 2 — Headline */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, delay: 0.25 }}
+            style={{ ...cardStyle, padding: "28px 24px" }}
+          >
+            <h1
+              style={{
+                fontFamily: "var(--font-display)",
+                fontSize: "32px",
+                fontWeight: 400,
+                color: "#cccccc",
+                margin: 0,
+                lineHeight: 1.1,
+                letterSpacing: "-0.02em",
+              }}
+            >
+              I Design the Future!
+            </h1>
+          </motion.div>
+
+          {/* Bottom row — description + button */}
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "14px", flex: 1 }}>
+
+            {/* Card 3 — Description */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.35 }}
+              style={{ ...cardStyle, display: "flex", alignItems: "flex-start" }}
+            >
+              <p
+                style={{
+                  fontFamily: "var(--font-body)",
+                  fontSize: "18.5px",
+                  color: "#cccccc",
+                  margin: 0,
+                  lineHeight: 1.65,
+                }}
+              >
+                Help you craft engaging user interfaces and experiences through UI/UX design.
+                Expertise in mobile &amp; web design, using Figma, Illustrator, Framer &amp; Cursor
+              </p>
+            </motion.div>
+
+            {/* Card 4 — CTAs */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.45 }}
+              style={{
+                ...cardStyle,
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                gap: "12px",
+              }}
+            >
+              {/* Available for Work */}
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "8px",
+                  fontFamily: "var(--font-body)",
+                  fontSize: "14px",
+                  fontWeight: 500,
+                  color: "#cccccc",
+                }}
+              >
+                <span style={{ color: "#4ade80", fontSize: "18px", lineHeight: 1 }}>•</span>
+                Available for Work
+              </div>
+
+              {/* Let's Connect button */}
+              <a
+                href="#contact"
+                onClick={(e) => {
+                  e.preventDefault();
+                  document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+                }}
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  fontFamily: "var(--font-body)",
+                  fontSize: "14px",
+                  fontWeight: 600,
+                  color: "#ffffff",
+                  background: "transparent",
+                  border: "1px solid #333333",
+                  borderRadius: "10px",
+                  padding: "12px 20px",
+                  textDecoration: "none",
+                  transition: "background 0.2s, border-color 0.2s",
+                  cursor: "pointer",
+                }}
+                onMouseEnter={(e) => { e.currentTarget.style.background = "#1e1e1e"; e.currentTarget.style.borderColor = "#444"; }}
+                onMouseLeave={(e) => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.borderColor = "#333333"; }}
+              >
+                Let's Connect!
+              </a>
+            </motion.div>
+          </div>
         </div>
-      </div>
+
+        {/* ── RIGHT COLUMN — Photo ── */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.97 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          style={{
+            borderRadius: "14px",
+            overflow: "hidden",
+            background: "#1a1a1a",
+            border: "1px solid #222",
+            minHeight: "551px",
+          }}
+        >
+          <img
+            src={heroPhoto}
+            alt="Damilola Dada"
+            style={{
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+              objectPosition: "center top",
+              display: "block",
+            }}
+          />
+        </motion.div>
+      </motion.div>
     </section>
   );
 }

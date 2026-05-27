@@ -1,81 +1,132 @@
-import { motion } from "framer-motion";
+import { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 
-const itemVariants = {
-  hidden: { opacity: 0, x: -30 },
-  visible: { opacity: 1, x: 0, transition: { duration: 0.5, ease: "easeOut" } },
-};
+export default function ExperienceCard({ data, index, totalCards }) {
+  const cardRef = useRef(null);
 
-export default function ExperienceCard({ exp, isLast }) {
+  const { scrollYProgress } = useScroll({
+    target: cardRef,
+    offset: ["start end", "start start"],
+  });
+
+  // Slide up from below as card enters viewport
+  const y       = useTransform(scrollYProgress, [0, 1], [100, 0]);
+  const opacity = useTransform(scrollYProgress, [0, 0.5], [0, 1]);
+
+  // Scale down slightly as card is buried under the stack
+  const scale   = useTransform(scrollYProgress, [0, 1], [0.93, 1]);
+
+  const topOffset = 96 + index * 18;
+
   return (
-    <motion.div variants={itemVariants} className="flex gap-6 relative">
-      {/* Timeline line */}
-      <div className="flex flex-col items-center">
-        <div
-          className="w-3 h-3 rounded-full mt-1.5 flex-shrink-0 z-10 relative"
-          style={{ background: "var(--accent)", boxShadow: "0 0 10px rgba(74,222,128,0.5)" }}
-        />
-        {!isLast && (
-          <div
-            className="w-px flex-1 mt-1"
-            style={{ background: "linear-gradient(to bottom, rgba(74,222,128,0.3), transparent)", minHeight: "40px" }}
-          />
-        )}
-      </div>
-
-      {/* Card */}
+    <div
+      ref={cardRef}
+      style={{ marginBottom: "28px", position: "relative" }}
+    >
+      {/* Timeline dot */}
       <div
-        className="flex-1 rounded-2xl p-6 md:p-8 mb-6 transition-all duration-200 hover:border-opacity-60"
         style={{
-          background: "#0d0d0d",
-          border: "1px solid var(--border)",
+          position: "absolute",
+          left: "-32px",
+          top: "28px",
+          width: "10px",
+          height: "10px",
+          borderRadius: "50%",
+          background: "#ffffff",
+          border: "2px solid #0a0a0a",
+          boxShadow: "0 0 0 2px #444",
+          zIndex: index + 10,
+        }}
+      />
+
+      {/* Animated card */}
+      <motion.div
+        style={{
+          y,
+          opacity,
+          scale,
+          position: "sticky",
+          top: `${topOffset}px`,
+          zIndex: index + 1,
+          background: "#111111",
+          border: "1px solid #2a2a2a",
+          borderRadius: "14px",
+          padding: "28px 32px",
+          boxShadow: "0 8px 32px rgba(0,0,0,0.5)",
+          transformOrigin: "top center",
+          WebkitPosition: "sticky",
         }}
       >
-        <div className="flex flex-wrap items-start justify-between gap-3 mb-4">
+        {/* Card header */}
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "flex-start",
+            marginBottom: "20px",
+            flexWrap: "wrap",
+            gap: "8px",
+          }}
+        >
           <div>
             <h3
-              className="text-lg md:text-xl font-bold"
-              style={{ fontFamily: "var(--font-display)", color: "var(--text-primary)" }}
+              style={{
+                fontFamily: "var(--font-display)",
+                fontWeight: 700,
+                fontSize: "17px",
+                color: "#ffffff",
+                margin: "0 0 4px",
+              }}
             >
-              {exp.company}
+              {data.company}
+              <span
+                style={{
+                  fontFamily: "var(--font-body)",
+                  fontSize: "13px",
+                  color: "#555",
+                  fontWeight: 400,
+                  fontStyle: "italic",
+                  marginLeft: "8px",
+                }}
+              >
+                ({data.type})
+              </span>
             </h3>
-            <p
-              className="text-sm font-medium mt-0.5"
-              style={{ color: "var(--accent)", fontFamily: "var(--font-body)" }}
-            >
-              {exp.role}
-            </p>
           </div>
-          <div className="flex flex-wrap gap-2 text-right">
-            <span
-              className="text-xs px-3 py-1 rounded-full"
-              style={{ background: "#1a1a1a", color: "#888", border: "1px solid #2a2a2a" }}
-            >
-              {exp.period}
-            </span>
-            <span
-              className="text-xs px-3 py-1 rounded-full"
-              style={{ background: "rgba(74,222,128,0.08)", color: "var(--accent)", border: "1px solid rgba(74,222,128,0.15)" }}
-            >
-              {exp.type}
-            </span>
-          </div>
+          <span
+            style={{
+              fontFamily: "var(--font-body)",
+              fontSize: "12px",
+              color: "#666",
+              whiteSpace: "nowrap",
+              paddingTop: "2px",
+            }}
+          >
+            {data.period}
+          </span>
         </div>
 
-        {exp.location && (
-          <p className="text-xs mb-3" style={{ color: "#666" }}>
-            📍 {exp.location}
-          </p>
-        )}
+        {/* Divider */}
+        <div style={{ height: "1px", background: "#1e1e1e", marginBottom: "20px" }} />
 
-        <ul className="flex flex-col gap-2">
-          {exp.bullets.map((bullet, i) => (
-            <li key={i} className="flex gap-2 text-sm leading-relaxed" style={{ color: "#999" }}>
-              <span className="mt-1.5 flex-shrink-0 w-1 h-1 rounded-full" style={{ background: "var(--accent)" }} />
-              {bullet}
-            </li>
+        {/* Bullet points */}
+        <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+          {data.bullets.map((point, i) => (
+            <p
+              key={i}
+              style={{
+                fontFamily: "var(--font-body)",
+                fontSize: "14px",
+                color: "#aaaaaa",
+                lineHeight: "1.7",
+                margin: 0,
+              }}
+            >
+              {point}
+            </p>
           ))}
-        </ul>
-      </div>
-    </motion.div>
+        </div>
+      </motion.div>
+    </div>
   );
 }

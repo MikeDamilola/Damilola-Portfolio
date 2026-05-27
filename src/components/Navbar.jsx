@@ -1,22 +1,15 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { HiOutlineCloudArrowDown } from "react-icons/hi2";
 
 const navLinks = [
   { label: "My Projects", href: "#projects" },
-  { label: "Tools", href: "#tools" },
+  { label: "Career", href: "#tools" },
   { label: "Experience", href: "#experience" },
-  { label: "Contact", href: "#contact" },
 ];
 
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
   const [active, setActive] = useState("");
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
 
   useEffect(() => {
     const sections = navLinks.map((l) => l.href.replace("#", ""));
@@ -43,72 +36,132 @@ export default function Navbar() {
 
   return (
     <motion.nav
-      initial={{ y: -80, opacity: 0 }}
+      initial={{ y: -88, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
-      className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+      transition={{ duration: 0.5, ease: "easeOut" }}
       style={{
-        backgroundColor: scrolled ? "rgba(10,10,10,0.9)" : "transparent",
-        backdropFilter: scrolled ? "blur(16px)" : "none",
-        borderBottom: scrolled ? "1px solid #1a1a1a" : "none",
-        padding: scrolled ? "14px 0" : "24px 0",
+        position: "fixed",
+        top: 0,
+        left: 0,
+        right: 0,
+        zIndex: 50,
+        height: "88px",
+        background: "#111111",
+        borderBottom: "1px solid #1e1e1e",
+        display: "flex",
+        alignItems: "center",
       }}
     >
-      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
+      {/* Inner container — mirrors the 1024px image width with 40px side padding */}
+      <div
+        style={{
+          width: "100%",
+          maxWidth: "1024px",
+          margin: "0 auto",
+          padding: "0 40px",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+        }}
+      >
         {/* Logo */}
         <a
           href="#"
           onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); }}
-          style={{ fontFamily: "var(--font-display)", color: "var(--text-primary)" }}
-          className="text-xl font-bold tracking-tight hover:opacity-80 transition-opacity"
+          style={{
+            fontFamily: "var(--font-display)",
+            color: "#ffffff",
+            fontSize: "16px",
+            fontWeight: 800,
+            letterSpacing: "-0.02em",
+            textDecoration: "none",
+            whiteSpace: "nowrap",
+          }}
         >
           Damilola Michael
         </a>
 
         {/* Nav links */}
-        <div className="hidden md:flex items-center gap-8">
+        <div style={{ display: "flex", alignItems: "center", gap: "40px" }}>
           {navLinks.map((link) => (
             <a
               key={link.href}
               href={link.href}
               onClick={(e) => handleNavClick(e, link.href)}
-              className="relative text-sm font-medium transition-colors duration-200"
               style={{
-                color: active === link.href.replace("#", "") ? "var(--accent)" : "var(--text-muted)",
                 fontFamily: "var(--font-body)",
+                fontSize: "14px",
+                fontWeight: 500,
+                color: active === link.href.replace("#", "") ? "#ffffff" : "#888888",
+                textDecoration: "none",
+                position: "relative",
+                transition: "color 0.2s",
               }}
             >
               {link.label}
               {active === link.href.replace("#", "") && (
                 <motion.span
                   layoutId="nav-underline"
-                  className="absolute -bottom-1 left-0 right-0 h-px"
-                  style={{ background: "var(--accent)" }}
+                  style={{
+                    position: "absolute",
+                    bottom: "-3px",
+                    left: 0,
+                    right: 0,
+                    height: "1px",
+                    background: "var(--accent)",
+                  }}
                 />
               )}
             </a>
           ))}
 
-          {/* Resume button */}
+          {/* Download Resume button */}
           <a
             href="/resume.pdf"
             download
-            className="text-sm font-medium px-4 py-2 rounded-full border transition-all duration-200 hover:bg-white hover:text-black"
             style={{
-              border: "1px solid #444",
-              color: "var(--text-primary)",
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "10px",
               fontFamily: "var(--font-body)",
+              fontSize: "14px",
+              fontWeight: 500,
+              color: "#f97316",
+              background: "#1a1a1a",
+              border: "1px solid #2c2c2c",
+              borderRadius: "999px",
+              padding: "8px 10px 8px 20px",
+              textDecoration: "none",
+              transition: "opacity 0.2s",
+              whiteSpace: "nowrap",
             }}
           >
             Download Resume
+            <span
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                justifyContent: "center",
+                width: "30px",
+                height: "30px",
+                borderRadius: "50%",
+                background: "#2a2a2a",
+                flexShrink: 0,
+              }}
+            >
+              <HiOutlineCloudArrowDown size={15} color="#f97316" />
+            </span>
           </a>
         </div>
 
-        {/* Mobile hamburger placeholder */}
-        <div className="md:hidden flex flex-col gap-1.5 cursor-pointer">
-          <span className="w-6 h-px bg-white block" />
-          <span className="w-4 h-px bg-white block" />
-          <span className="w-6 h-px bg-white block" />
+        {/* Mobile hamburger */}
+        <div
+          className="md:hidden"
+          style={{ display: "flex", flexDirection: "column", gap: "6px", cursor: "pointer" }}
+        >
+          <span style={{ width: "24px", height: "1px", background: "#fff", display: "block" }} />
+          <span style={{ width: "16px", height: "1px", background: "#fff", display: "block" }} />
+          <span style={{ width: "24px", height: "1px", background: "#fff", display: "block" }} />
         </div>
       </div>
     </motion.nav>

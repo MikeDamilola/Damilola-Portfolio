@@ -47,7 +47,7 @@ export default function ProjectCard({ project, index }) {
           </div>
 
           <h3
-            className="text-xl md:text-2xl font-bold leading-snug"
+            className="text-x5 md:text-2xl font-bold leading-snug"
             style={{ fontFamily: "var(--font-display)", color: "var(--text-primary)" }}
           >
             {project.title}

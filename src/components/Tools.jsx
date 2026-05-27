@@ -1,136 +1,106 @@
-import { motion } from "framer-motion";
-import {
-  SiFigma,
-  SiAdobexd,
-  SiAdobephotoshop,
-  SiAdobeillustrator,
-  SiAdobeaftereffects,
-  SiAdobepremierepro,
-  SiSketch,
-  SiNotion,
-  SiSlack,
-  SiFramer,
-  SiWebflow,
-  SiMiro,
-  SiVisualstudiocode,
-  SiInvision,
-  SiZeplin,
-} from "react-icons/si";
+import item1  from "../assets/Item 1.png";
+import item2  from "../assets/Item 2.png";
+import item3  from "../assets/Item 3.png";
+import item4  from "../assets/Item 4.png";
+import item5  from "../assets/Item 5.png";
+import item6  from "../assets/Item 6.png";
+import item7  from "../assets/Item 7.png";
+import item8  from "../assets/Item 8.png";
+import item9  from "../assets/Item 9.png";
+import item10 from "../assets/Item 10.png";
+import item11 from "../assets/Item 11.png";
+import item12 from "../assets/Item 12.png";
 
 const tools = [
-  { icon: SiFigma, name: "Figma", color: "#F24E1E" },
-  { icon: SiAdobexd, name: "Adobe XD", color: "#FF61F6" },
-  { icon: SiAdobephotoshop, name: "Photoshop", color: "#31A8FF" },
-  { icon: SiAdobeillustrator, name: "Illustrator", color: "#FF9A00" },
-  { icon: SiAdobeaftereffects, name: "After Effects", color: "#9999FF" },
-  { icon: SiAdobepremierepro, name: "Premiere Pro", color: "#9999FF" },
-  { icon: SiSketch, name: "Sketch", color: "#F7B500" },
-  { icon: SiNotion, name: "Notion", color: "#ffffff" },
-  { icon: SiSlack, name: "Slack", color: "#4A154B" },
-  { icon: SiFramer, name: "Framer", color: "#0055FF" },
-  { icon: SiZeplin, name: "Zeplin", color: "#FFBE00" },
-  { icon: SiVisualstudiocode, name: "VS Code", color: "#007ACC" },
-  { icon: SiInvision, name: "InVision", color: "#FF3366" },
-  { icon: SiMiro, name: "Miro", color: "#FFD02F" },
-  { icon: SiWebflow, name: "Webflow", color: "#4353FF" },
+  { src: item1,  name: "Item 1"  },
+  { src: item2,  name: "Item 2"  },
+  { src: item3,  name: "Item 3"  },
+  { src: item4,  name: "Item 4"  },
+  { src: item5,  name: "Item 5"  },
+  { src: item6,  name: "Item 6"  },
+  { src: item7,  name: "Item 7"  },
+  { src: item8,  name: "Item 8"  },
+  { src: item9,  name: "Item 9"  },
+  { src: item10, name: "Item 10" },
+  { src: item11, name: "Item 11" },
+  { src: item12, name: "Item 12" },
 ];
 
-function ToolCard({ icon: Icon, name, color }) {
+// Triple so the loop is seamless on any screen width
+const marqueeItems = [...tools, ...tools, ...tools];
+
+function ToolCard({ src, name }) {
   return (
-    <motion.div
-      whileHover={{ scale: 1.1, y: -4 }}
-      className="group relative flex flex-col items-center justify-center gap-2 p-4 rounded-xl cursor-default"
+    <div
+      title={name}
       style={{
-        background: "#0f0f0f",
-        border: "1px solid var(--border)",
-        minWidth: "80px",
-        minHeight: "80px",
+        width: "62px",
+        height: "62px",
+        borderRadius: "14px",
+        background: "#1a1a1a",
+        border: "1px solid #2a2a2a",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        flexShrink: 0,
+        overflow: "hidden",
+        padding: "10px",
       }}
     >
-      <Icon size={28} style={{ color }} />
-      {/* Tooltip */}
-      <span
-        className="absolute -top-9 left-1/2 -translate-x-1/2 whitespace-nowrap text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"
-        style={{ background: "#222", color: "#fff", border: "1px solid #333" }}
-      >
-        {name}
-      </span>
-    </motion.div>
+      <img
+        src={src}
+        alt={name}
+        style={{ width: "100%", height: "100%", objectFit: "contain" }}
+      />
+    </div>
   );
 }
 
-const containerVariants = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.05 } },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.4 } },
-};
-
 export default function Tools() {
-  const doubled = [...tools, ...tools];
-
   return (
     <section
       id="tools"
-      className="py-20 overflow-hidden"
-      style={{ background: "var(--bg-primary)" }}
+      style={{
+        background: "var(--bg-primary)",
+        padding: "20px 0 50px",
+        overflow: "hidden",
+      }}
     >
-      <div className="max-w-7xl mx-auto px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mb-12"
-        >
-          <p className="text-sm font-medium mb-2" style={{ color: "var(--accent)", fontFamily: "var(--font-body)" }}>
-            My Toolkit
-          </p>
-          <h2
-            className="text-3xl md:text-4xl font-bold"
-            style={{ fontFamily: "var(--font-display)", color: "var(--text-primary)" }}
-          >
-            Tools I use on a daily basis
-          </h2>
-        </motion.div>
-      </div>
+      {/* Title */}
+      <p
+        style={{
+          fontFamily: "var(--font-body)",
+          fontSize: "16px",
+          fontWeight: 500,
+          color: "#cccccc",
+          textAlign: "center",
+          marginBottom: "32px",
+          letterSpacing: "0.01em",
+        }}
+      >
+        Tools i use on a daily basis
+      </p>
 
-      {/* Marquee */}
-      <div className="relative">
+      {/* Scrolling row */}
+      <div style={{ position: "relative", width: "100%", overflow: "hidden" }}>
         <div
-          className="flex gap-4 w-max"
-          style={{ animation: "marquee 30s linear infinite" }}
+          style={{
+            display: "flex",
+            gap: "12px",
+            width: "max-content",
+            animation: "toolsMarquee 28s linear infinite",
+          }}
         >
-          {doubled.map((tool, i) => (
+          {marqueeItems.map((tool, i) => (
             <ToolCard key={`${tool.name}-${i}`} {...tool} />
           ))}
         </div>
       </div>
 
-      {/* Also show static grid on larger screens */}
-      <div className="max-w-7xl mx-auto px-6 mt-8 hidden md:block">
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="flex flex-wrap gap-3"
-        >
-          {tools.map((tool) => (
-            <motion.div key={tool.name} variants={itemVariants}>
-              <ToolCard {...tool} />
-            </motion.div>
-          ))}
-        </motion.div>
-      </div>
-
       <style>{`
-        @keyframes marquee {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
+        @keyframes toolsMarquee {
+          0%   { transform: translateX(0); }
+          100% { transform: translateX(-33.333%); }
         }
       `}</style>
     </section>

@@ -1,6 +1,6 @@
-@import "tailwindcss";
-
 @import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+@import "tailwindcss";
 
 :root {
   --bg-primary: #0a0a0a;
@@ -50,4 +50,43 @@ h1, h2, h3, h4 {
 
 ::-webkit-scrollbar-thumb:hover {
   background: var(--accent);
+}
+
+/* Hide scrollbar but keep scroll functionality */
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* 5-column grid on desktop */
+@media (min-width: 1024px) {
+  .testimonials-grid {
+    display: grid !important;
+    grid-template-columns: repeat(5, 1fr);
+    overflow-x: visible !important;
+  }
+}
+
+/* Footer responsive */
+@media (max-width: 640px) {
+  .footer-outer {
+    padding: 24px 16px !important;
+  }
+  .footer-card {
+    padding: 32px 24px !important;
+    border-radius: 16px !important;
+  }
+  .footer-grid {
+    grid-template-columns: 1fr !important;
+    gap: 0 !important;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
+  .footer-card {
+    padding: 48px 40px !important;
+  }
 }

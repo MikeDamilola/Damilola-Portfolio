@@ -2,7 +2,9 @@ import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import Tools from "./components/Tools";
 import Projects from "./components/Projects";
-import Experience from "./components/Experience";
+import DesignGallery from "./components/DesignGallery";
+import CareerTimeline from "./components/CareerTimeline";
+import TrustedByProfessionals from "./components/TrustedByProfessionals";
 import Footer from "./components/Footer";
 
 export default function App() {
@@ -12,7 +14,9 @@ export default function App() {
       <Hero />
       <Tools />
       <Projects />
-      <Experience />
+      <DesignGallery />
+      <CareerTimeline />
+      <TrustedByProfessionals />
       <Footer />
     </div>
   );
