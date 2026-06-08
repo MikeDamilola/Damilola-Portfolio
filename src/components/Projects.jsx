@@ -1,18 +1,28 @@
-import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { useEffect, useRef } from "react";
+import Lenis from "lenis";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import see9jaImg from "../assets/See9ja.png";
 import noCashImg from "../assets/No Cash.png";
 import hospitalityImg from "../assets/Hospitality.png";
 import farmIlyImg from "../assets/Farmily.png";
 import learnexoImg from "../assets/Learnexo.png";
 import evChargingImg from "../assets/EV Charging.png";
+import ProjectCard from "./ProjectCard";
 import "./Projects.css";
+
+gsap.registerPlugin(ScrollTrigger);
+
+const MOBILE_TAGS = ["UI Design", "UX Design", "Mobile App", "Case Study"];
 
 const projects = [
   {
     id: 1,
     title: "'Discover Nigeria Effortlessly: Your Ultimate Solution to Seamless Tourism Adventures!'",
+    mobileTitle:
+      "Discover Nigeria Effortlessly: Your Ultimate Solution to Seamless Tourism Adventures.",
     tags: ["UX Design", "UI Design", "Prototype", "User Testing"],
+    mobileTags: MOBILE_TAGS,
     image: see9jaImg,
     bg: "#111a11",
     link: "#",
@@ -20,7 +30,10 @@ const projects = [
   {
     id: 2,
     title: "'Reimagining Everyday Mobility in Africa: A Unified App for Transport Payments, Wallets, and Smart Ride Sharing Access'",
+    mobileTitle:
+      "Reimagining Everyday Mobility in Africa: A Unified App for Transport Payments, Wallets, and Smart Ride-Sharing Access.",
     tags: ["UX Design", "UI Design", "Prototype", "User Testing"],
+    mobileTags: MOBILE_TAGS,
     image: noCashImg,
     bg: "#0f180f",
     link: "#",
@@ -28,7 +41,10 @@ const projects = [
   {
     id: 3,
     title: "'Redefining Hospitality: Designing an App to Connect Users with Restaurants, Hotels, and Events Across Africa'",
+    mobileTitle:
+      "Redefining Hospitality: Designing an App to Connect Users with Restaurants, Hotels, and Events Across Africa.",
     tags: ["UX Design", "UI Design", "Prototype", "User Testing"],
+    mobileTags: MOBILE_TAGS,
     image: hospitalityImg,
     bg: "#1a1208",
     link: "#",
@@ -36,7 +52,10 @@ const projects = [
   {
     id: 4,
     title: "'Farmily: Revolutionizing Online Grocery Shopping and Fresh Farm Produce Delivery in Africa'",
+    mobileTitle:
+      "Farming Fresh: Refining Online Grocery Shopping and Fresh Farm Produce Delivery in Africa.",
     tags: ["UX Design", "UI Design", "Prototype", "User Testing"],
+    mobileTags: MOBILE_TAGS,
     image: farmIlyImg,
     bg: "#0d1a0d",
     link: "#",
@@ -44,7 +63,10 @@ const projects = [
   {
     id: 5,
     title: "'Learnexo: An AI-Driven Learning Platform That Adapts to Every Learner, An Inclusive Learning Experience Designed Around You'",
+    mobileTitle:
+      "Learnwise: An AI-Driven Learning Platform That Adapts to Every Learner, An Inclusive Learning Experience Design for All Students.",
     tags: ["UX Design", "UI Design", "Prototype", "User Testing"],
+    mobileTags: MOBILE_TAGS,
     image: learnexoImg,
     bg: "#080f28",
     link: "#",
@@ -52,168 +74,135 @@ const projects = [
   {
     id: 6,
     title: "'Powering Mobility Effortlessly: Your Ultimate Solution to Next-Generation EV Charging Stations!'",
+    mobileTitle:
+      "Powering Mobility Effortlessly: Your Ultimate Solution for Next Generation EV Charging Stations.",
     tags: ["UX Design", "UI Design", "Prototype", "User Testing"],
+    mobileTags: MOBILE_TAGS,
     image: evChargingImg,
     bg: "#081520",
     link: "#",
   },
 ];
 
-const STICKY_TOP = 108;
-const LANE_HEIGHT = 420;
-
-function MobileProjectCard({ project, index }) {
+function DesktopProjectCard({ project }) {
   return (
-    <motion.article
-      className="project-card-mobile"
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-40px" }}
-      transition={{ duration: 0.45, delay: index * 0.05, ease: "easeOut" }}
-    >
-      <div className="project-card-mobile__image-wrap" style={{ background: project.bg }}>
+    <div className="projects-stack-card">
+      <div className="projects-stack-card__image" style={{ background: project.bg }}>
         <img src={project.image} alt={`Project ${project.id}`} />
       </div>
 
-      <h3 className="project-card-mobile__title">{project.title}</h3>
+      <div className="projects-stack-card__content">
+        <p className="projects-stack-card__title">{project.title}</p>
 
-      <div className="project-card-mobile__tags">
-        {project.tags.map((tag) => (
-          <span key={tag} className="project-card-mobile__tag">
-            {tag}
-          </span>
-        ))}
+        <div className="projects-stack-card__tags">
+          {project.tags.map((tag) => (
+            <span key={tag}>{tag}</span>
+          ))}
+        </div>
+
+        <a href={project.link} className="projects-stack-card__btn">
+          View Project <span aria-hidden="true">→</span>
+        </a>
       </div>
-
-      <a href={project.link} className="project-card-mobile__btn">
-        View Project
-        <span className="project-card-mobile__btn-arrow" aria-hidden="true">↗</span>
-      </a>
-    </motion.article>
-  );
-}
-
-function StackCard({ project, index, total }) {
-  const laneRef = useRef(null);
-
-  const { scrollYProgress } = useScroll({
-    target: laneRef,
-    offset: ["start start", "end start"],
-  });
-
-  const scale = useTransform(scrollYProgress, [0, 1], [1, 1 - 0.04 * (total - index)]);
-  const opacity = useTransform(scrollYProgress, [0, 0.7, 1], [1, 1, 0.55]);
-  const y = useTransform(scrollYProgress, [0, 1], [0, -24]);
-
-  return (
-    <div
-      ref={laneRef}
-      style={{ height: `${LANE_HEIGHT}px`, position: "relative" }}
-    >
-      <motion.div
-        style={{
-          position: "sticky",
-          top: `${STICKY_TOP}px`,
-          scale,
-          opacity,
-          y,
-          transformOrigin: "top center",
-          borderRadius: "18px",
-          overflow: "hidden",
-          border: "1px solid #222",
-          display: "grid",
-          gridTemplateColumns: "45% 55%",
-          background: "#111111",
-          minHeight: "300px",
-          boxShadow: "0 8px 40px rgba(0,0,0,0.5)",
-        }}
-      >
-        <div style={{ background: project.bg, overflow: "hidden", minHeight: "300px" }}>
-          <img
-            src={project.image}
-            alt={`Project ${project.id}`}
-            style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
-          />
-        </div>
-
-        <div
-          style={{
-            padding: "36px 32px",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "space-between",
-            gap: "20px",
-          }}
-        >
-          <p
-            style={{
-              fontFamily: "var(--font-body)",
-              fontSize: "24.5px",
-              fontWeight: 400,
-              color: "#f0f0f0",
-              lineHeight: 1.55,
-              margin: 0,
-            }}
-          >
-            {project.title}
-          </p>
-
-          <div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
-            {project.tags.map((tag) => (
-              <span
-                key={tag}
-                style={{
-                  fontFamily: "var(--font-body)",
-                  fontSize: "11px",
-                  fontWeight: 500,
-                  color: "#777",
-                  background: "#1a1a1a",
-                  border: "1px solid #2a2a2a",
-                  borderRadius: "999px",
-                  padding: "4px 12px",
-                }}
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
-
-          <a
-            href={project.link}
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: "8px",
-              alignSelf: "flex-start",
-              fontFamily: "var(--font-body)",
-              fontSize: "12px",
-              fontWeight: 600,
-              color: "#fff",
-              background: "#1e1e1e",
-              border: "1px solid #303030",
-              borderRadius: "999px",
-              padding: "8px 20px",
-              textDecoration: "none",
-              transition: "background 0.2s, border-color 0.2s",
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.background = "#2a2a2a";
-              e.currentTarget.style.borderColor = "#444";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.background = "#1e1e1e";
-              e.currentTarget.style.borderColor = "#303030";
-            }}
-          >
-            View Project <span style={{ fontSize: "14px" }}>→</span>
-          </a>
-        </div>
-      </motion.div>
     </div>
   );
 }
 
+function setupStackScroll(wrapper, cardElements) {
+  cardElements.forEach((card, i) => {
+    if (i === 0) {
+      gsap.set(card, { y: 0, opacity: 1 });
+    } else {
+      gsap.set(card, { y: "100%", opacity: 0.5 });
+    }
+  });
+
+  const totalCards = cardElements.length;
+
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: wrapper,
+      start: "top top",
+      end: `+=${(totalCards - 1) * 100}%`,
+      pin: true,
+      scrub: 1,
+      anticipatePin: 1,
+    },
+  });
+
+  cardElements.forEach((card, i) => {
+    if (i === 0) {
+      tl.to(
+        card,
+        { opacity: 0.5, duration: 1, ease: "power2.inOut" },
+        i
+      );
+    } else {
+      const startTime = i - 1;
+
+      tl.to(
+        card,
+        { y: "0%", opacity: 1, duration: 1, ease: "power2.inOut" },
+        startTime
+      );
+
+      const prevCard = cardElements[i - 1];
+      tl.to(
+        prevCard,
+        {
+          opacity: i === 1 ? 0.5 : 0.3,
+          duration: 1,
+          ease: "power2.inOut",
+        },
+        startTime
+      );
+    }
+  });
+}
+
+function useStackScrollAnimation(wrapperRef, cardsRef, query) {
+  useEffect(() => {
+    const mediaQuery = window.matchMedia(query);
+    if (!mediaQuery.matches || !wrapperRef.current) return undefined;
+
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      orientation: "vertical",
+      gestureOrientation: "vertical",
+      smoothWheel: true,
+      wheelMultiplier: 1,
+      smoothTouch: false,
+      touchMultiplier: 2,
+    });
+
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+    lenis.on("scroll", ScrollTrigger.update);
+
+    const cardElements = cardsRef.current.filter(Boolean);
+    setupStackScroll(wrapperRef.current, cardElements);
+    ScrollTrigger.refresh();
+
+    return () => {
+      lenis.destroy();
+      ScrollTrigger.getAll().forEach((t) => t.kill());
+    };
+  }, [wrapperRef, cardsRef, query]);
+}
+
 export default function Projects() {
+  const mobileWrapperRef = useRef(null);
+  const mobileCardsRef = useRef([]);
+  const desktopWrapperRef = useRef(null);
+  const desktopCardsRef = useRef([]);
+
+  useStackScrollAnimation(mobileWrapperRef, mobileCardsRef, "(max-width: 767px)");
+  useStackScrollAnimation(desktopWrapperRef, desktopCardsRef, "(min-width: 768px)");
+
   return (
     <section id="projects" className="projects-section">
       <div className="projects-header">
@@ -221,20 +210,41 @@ export default function Projects() {
       </div>
 
       <div className="projects-mobile">
-        {projects.map((project, index) => (
-          <MobileProjectCard key={project.id} project={project} index={index} />
-        ))}
+        <div ref={mobileWrapperRef} className="stack-wrapper stack-wrapper--mobile">
+          {projects.map((project, index) => (
+            <div
+              key={project.id}
+              ref={(el) => {
+                mobileCardsRef.current[index] = el;
+              }}
+              className="stack-card"
+              style={{ zIndex: index + 1 }}
+            >
+              <div className="stack-card__inner stack-card__inner--mobile">
+                <ProjectCard project={project} />
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
 
       <div className="projects-desktop">
-        {projects.map((project, index) => (
-          <StackCard
-            key={project.id}
-            project={project}
-            index={index}
-            total={projects.length}
-          />
-        ))}
+        <div ref={desktopWrapperRef} className="stack-wrapper">
+          {projects.map((project, index) => (
+            <div
+              key={project.id}
+              ref={(el) => {
+                desktopCardsRef.current[index] = el;
+              }}
+              className="stack-card"
+              style={{ zIndex: index + 1 }}
+            >
+              <div className="stack-card__inner">
+                <DesktopProjectCard project={project} />
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );

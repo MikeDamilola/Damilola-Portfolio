@@ -19,12 +19,7 @@
 }
 
 .projects-mobile {
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
-  max-width: 984px;
-  margin: 0 auto;
-  padding: 0 20px;
+  display: block;
 }
 
 .projects-desktop {
@@ -34,13 +29,20 @@
 .project-card-mobile {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  width: 100%;
+  background: #0a0a0a;
+  border: 1px solid #333333;
+  border-radius: 24px;
+  padding: 16px;
+  gap: 0;
+  overflow: hidden;
 }
 
 .project-card-mobile__image-wrap {
-  border-radius: 14px;
+  border-radius: 16px;
   overflow: hidden;
   background: #111111;
+  margin-bottom: 18px;
 }
 
 .project-card-mobile__image-wrap img {
@@ -51,26 +53,29 @@
   aspect-ratio: 16 / 10;
 }
 
+.project-card-mobile__content {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 0 4px 4px;
+}
+
 .project-card-mobile__title {
   font-family: var(--font-body);
-  font-size: 17px;
+  font-size: 16px;
   font-weight: 600;
   color: #ffffff;
-  line-height: 1.45;
+  line-height: 1.5;
   margin: 0;
 }
 
 .project-card-mobile__tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px 16px;
-}
-
-.project-card-mobile__tag {
   font-family: var(--font-body);
   font-size: 12px;
   font-weight: 400;
-  color: #aaaaaa;
+  color: #888888;
+  line-height: 1.4;
+  margin: 0;
 }
 
 .project-card-mobile__btn {
@@ -82,22 +87,62 @@
   font-size: 13px;
   font-weight: 500;
   color: #ffffff;
-  background: #332d2b;
-  border: none;
+  background: #2a2a2a;
+  border: 1px solid #3a3a3a;
   border-radius: 999px;
   padding: 10px 20px;
   text-decoration: none;
-  transition: background 0.2s;
   cursor: pointer;
+  margin-top: 4px;
+  transition: background 0.2s, border-color 0.2s;
 }
 
 .project-card-mobile__btn:hover {
-  background: #3f3835;
+  background: #333333;
+  border-color: #444444;
 }
 
 .project-card-mobile__btn-arrow {
   font-size: 14px;
   line-height: 1;
+}
+
+/* ── Sticky stack animation layer ── */
+.stack-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.stack-wrapper--mobile {
+  height: 100vh;
+}
+
+.stack-card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  will-change: transform, opacity;
+}
+
+.stack-card__inner {
+  width: 100%;
+  max-width: 984px;
+  margin: 0 auto;
+  padding: 0 20px;
+  height: auto;
+  box-sizing: border-box;
+}
+
+.stack-card__inner--mobile {
+  max-width: 100%;
+  padding: 0 20px;
 }
 
 /* ── Desktop projects (≥768px) ── */
@@ -122,8 +167,86 @@
 
   .projects-desktop {
     display: block;
-    max-width: 984px;
-    margin: 0 auto;
-    padding: 0 20px;
   }
+}
+
+/* Existing desktop card UI (unchanged styles, moved to CSS) */
+.projects-stack-card {
+  width: 100%;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid #222;
+  display: grid;
+  grid-template-columns: 45% 55%;
+  background: #111111;
+  min-height: 300px;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.5);
+}
+
+.projects-stack-card__image {
+  overflow: hidden;
+  min-height: 300px;
+}
+
+.projects-stack-card__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.projects-stack-card__content {
+  padding: 36px 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.projects-stack-card__title {
+  font-family: var(--font-body);
+  font-size: 24.5px;
+  font-weight: 400;
+  color: #f0f0f0;
+  line-height: 1.55;
+  margin: 0;
+}
+
+.projects-stack-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.projects-stack-card__tags span {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 500;
+  color: #777;
+  background: #1a1a1a;
+  border: 1px solid #2a2a2a;
+  border-radius: 999px;
+  padding: 4px 12px;
+}
+
+.projects-stack-card__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  align-self: flex-start;
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 600;
+  color: #fff;
+  background: #1e1e1e;
+  border: 1px solid #303030;
+  border-radius: 999px;
+  padding: 8px 20px;
+  text-decoration: none;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.projects-stack-card__btn:hover {
+  background: #2a2a2a;
+  border-color: #444;
 }
