@@ -1,0 +1,129 @@
+/* ── Mobile projects (≤767px) ── */
+.projects-section {
+  background: var(--bg-primary);
+  padding: 48px 0 64px;
+}
+
+.projects-header {
+  max-width: 984px;
+  margin: 0 auto 24px;
+  padding: 0 20px;
+}
+
+.projects-header p {
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 500;
+  color: #ffffff;
+  margin: 0;
+}
+
+.projects-mobile {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  max-width: 984px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.projects-desktop {
+  display: none;
+}
+
+.project-card-mobile {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.project-card-mobile__image-wrap {
+  border-radius: 14px;
+  overflow: hidden;
+  background: #111111;
+}
+
+.project-card-mobile__image-wrap img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  aspect-ratio: 16 / 10;
+}
+
+.project-card-mobile__title {
+  font-family: var(--font-body);
+  font-size: 17px;
+  font-weight: 600;
+  color: #ffffff;
+  line-height: 1.45;
+  margin: 0;
+}
+
+.project-card-mobile__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 16px;
+}
+
+.project-card-mobile__tag {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 400;
+  color: #aaaaaa;
+}
+
+.project-card-mobile__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  align-self: flex-start;
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 500;
+  color: #ffffff;
+  background: #332d2b;
+  border: none;
+  border-radius: 999px;
+  padding: 10px 20px;
+  text-decoration: none;
+  transition: background 0.2s;
+  cursor: pointer;
+}
+
+.project-card-mobile__btn:hover {
+  background: #3f3835;
+}
+
+.project-card-mobile__btn-arrow {
+  font-size: 14px;
+  line-height: 1;
+}
+
+/* ── Desktop projects (≥768px) ── */
+@media (min-width: 768px) {
+  .projects-section {
+    padding: 60px 0 100px;
+  }
+
+  .projects-header p {
+    font-family: var(--font-display);
+    font-size: 20px;
+    font-weight: 800;
+  }
+
+  .projects-header {
+    margin-bottom: 28px;
+  }
+
+  .projects-mobile {
+    display: none;
+  }
+
+  .projects-desktop {
+    display: block;
+    max-width: 984px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+}

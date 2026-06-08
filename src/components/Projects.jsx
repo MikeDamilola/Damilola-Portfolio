@@ -1,16 +1,17 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import see9jaImg     from "../assets/See9ja.png";
-import noCashImg     from "../assets/No Cash.png";
+import see9jaImg from "../assets/See9ja.png";
+import noCashImg from "../assets/No Cash.png";
 import hospitalityImg from "../assets/Hospitality.png";
-import farmIlyImg    from "../assets/Farmily.png";
-import learnexoImg   from "../assets/Learnexo.png";
+import farmIlyImg from "../assets/Farmily.png";
+import learnexoImg from "../assets/Learnexo.png";
 import evChargingImg from "../assets/EV Charging.png";
+import "./Projects.css";
 
 const projects = [
   {
     id: 1,
-    title: '"Discover Nigeria Effortlessly: Your Ultimate Solution to Seamless Tourism Adventures!"',
+    title: "'Discover Nigeria Effortlessly: Your Ultimate Solution to Seamless Tourism Adventures!'",
     tags: ["UX Design", "UI Design", "Prototype", "User Testing"],
     image: see9jaImg,
     bg: "#111a11",
@@ -18,7 +19,7 @@ const projects = [
   },
   {
     id: 2,
-    title: '"Reimagining Everyday Mobility in Africa: A Unified App for Transport Payments, Wallets, and Smart Ride Sharing Access"',
+    title: "'Reimagining Everyday Mobility in Africa: A Unified App for Transport Payments, Wallets, and Smart Ride Sharing Access'",
     tags: ["UX Design", "UI Design", "Prototype", "User Testing"],
     image: noCashImg,
     bg: "#0f180f",
@@ -26,7 +27,7 @@ const projects = [
   },
   {
     id: 3,
-    title: '"Redefining Hospitality: Designing an App to Connect Users with Restaurants, Hotels, and Events Across Africa"',
+    title: "'Redefining Hospitality: Designing an App to Connect Users with Restaurants, Hotels, and Events Across Africa'",
     tags: ["UX Design", "UI Design", "Prototype", "User Testing"],
     image: hospitalityImg,
     bg: "#1a1208",
@@ -34,7 +35,7 @@ const projects = [
   },
   {
     id: 4,
-    title: '"Farmily: Revolutionizing Online Grocery Shopping and Fresh Farm Produce Delivery in Africa"',
+    title: "'Farmily: Revolutionizing Online Grocery Shopping and Fresh Farm Produce Delivery in Africa'",
     tags: ["UX Design", "UI Design", "Prototype", "User Testing"],
     image: farmIlyImg,
     bg: "#0d1a0d",
@@ -42,7 +43,7 @@ const projects = [
   },
   {
     id: 5,
-    title: '"Learnexo: An AI-Driven Learning Platform That Adapts to Every Learner, An Inclusive Learning Experience Designed Around You"',
+    title: "'Learnexo: An AI-Driven Learning Platform That Adapts to Every Learner, An Inclusive Learning Experience Designed Around You'",
     tags: ["UX Design", "UI Design", "Prototype", "User Testing"],
     image: learnexoImg,
     bg: "#080f28",
@@ -50,7 +51,7 @@ const projects = [
   },
   {
     id: 6,
-    title: '"Powering Mobility Effortlessly: Your Ultimate Solution to Next-Generation EV Charging Stations!"',
+    title: "'Powering Mobility Effortlessly: Your Ultimate Solution to Next-Generation EV Charging Stations!'",
     tags: ["UX Design", "UI Design", "Prototype", "User Testing"],
     image: evChargingImg,
     bg: "#081520",
@@ -58,22 +59,51 @@ const projects = [
   },
 ];
 
-const STICKY_TOP  = 108;   // px from top where all cards pin
-const LANE_HEIGHT = 420;   // scroll distance each card occupies
+const STICKY_TOP = 108;
+const LANE_HEIGHT = 420;
+
+function MobileProjectCard({ project, index }) {
+  return (
+    <motion.article
+      className="project-card-mobile"
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-40px" }}
+      transition={{ duration: 0.45, delay: index * 0.05, ease: "easeOut" }}
+    >
+      <div className="project-card-mobile__image-wrap" style={{ background: project.bg }}>
+        <img src={project.image} alt={`Project ${project.id}`} />
+      </div>
+
+      <h3 className="project-card-mobile__title">{project.title}</h3>
+
+      <div className="project-card-mobile__tags">
+        {project.tags.map((tag) => (
+          <span key={tag} className="project-card-mobile__tag">
+            {tag}
+          </span>
+        ))}
+      </div>
+
+      <a href={project.link} className="project-card-mobile__btn">
+        View Project
+        <span className="project-card-mobile__btn-arrow" aria-hidden="true">↗</span>
+      </a>
+    </motion.article>
+  );
+}
 
 function StackCard({ project, index, total }) {
   const laneRef = useRef(null);
 
-  // Track scroll progress within this card's lane
   const { scrollYProgress } = useScroll({
     target: laneRef,
     offset: ["start start", "end start"],
   });
 
-  // As you scroll PAST this card, it shrinks into the background
-  const scale   = useTransform(scrollYProgress, [0, 1], [1, 1 - 0.04 * (total - index)]);
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 1 - 0.04 * (total - index)]);
   const opacity = useTransform(scrollYProgress, [0, 0.7, 1], [1, 1, 0.55]);
-  const y       = useTransform(scrollYProgress, [0, 1], [0, -24]);
+  const y = useTransform(scrollYProgress, [0, 1], [0, -24]);
 
   return (
     <div
@@ -98,7 +128,6 @@ function StackCard({ project, index, total }) {
           boxShadow: "0 8px 40px rgba(0,0,0,0.5)",
         }}
       >
-        {/* LEFT — image */}
         <div style={{ background: project.bg, overflow: "hidden", minHeight: "300px" }}>
           <img
             src={project.image}
@@ -107,7 +136,6 @@ function StackCard({ project, index, total }) {
           />
         </div>
 
-        {/* RIGHT — content */}
         <div
           style={{
             padding: "36px 32px",
@@ -187,27 +215,18 @@ function StackCard({ project, index, total }) {
 
 export default function Projects() {
   return (
-    <section
-      id="projects"
-      style={{ background: "var(--bg-primary)", padding: "60px 0 100px" }}
-    >
-      {/* Section heading */}
-      <div style={{ maxWidth: "984px", margin: "0 auto 28px", padding: "0 20px" }}>
-        <p
-          style={{
-            fontFamily: "var(--font-display)",
-            fontSize: "20px",
-            fontWeight: 800,
-            color: "#ffffff",
-            margin: 0,
-          }}
-        >
-          Explore My Projects
-        </p>
+    <section id="projects" className="projects-section">
+      <div className="projects-header">
+        <p>Explore My Projects</p>
       </div>
 
-      {/* Stacking cards */}
-      <div style={{ maxWidth: "984px", margin: "0 auto", padding: "0 20px" }}>
+      <div className="projects-mobile">
+        {projects.map((project, index) => (
+          <MobileProjectCard key={project.id} project={project} index={index} />
+        ))}
+      </div>
+
+      <div className="projects-desktop">
         {projects.map((project, index) => (
           <StackCard
             key={project.id}

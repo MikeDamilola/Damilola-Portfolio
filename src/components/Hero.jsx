@@ -1,5 +1,12 @@
 import { motion } from "framer-motion";
+import {
+  HiOutlineGlobeAlt,
+  HiOutlineComputerDesktop,
+  HiOutlinePaperAirplane,
+  HiOutlineBriefcase,
+} from "react-icons/hi2";
 import heroPhoto from "../assets/Personal Pics.png";
+import "./Hero.css";
 
 const cardStyle = {
   background: "#161616",
@@ -8,211 +15,284 @@ const cardStyle = {
   padding: "20px 24px",
 };
 
+const infoItems = [
+  { icon: HiOutlineGlobeAlt, label: "Based In", value: "Lagos, Nigeria." },
+  { icon: HiOutlineComputerDesktop, label: "Open to remote work?", value: "Yes." },
+  { icon: HiOutlinePaperAirplane, label: "Open to relocate?", value: "Yes" },
+  { icon: HiOutlineBriefcase, label: "Experience", value: "4+ years" },
+];
+
+function TitleFrame({ children }) {
+  return (
+    <div className="hero-title-frame">
+      <span className="hero-corner hero-corner--tl" aria-hidden="true" />
+      <span className="hero-corner hero-corner--tr" aria-hidden="true" />
+      <span className="hero-corner hero-corner--bl" aria-hidden="true" />
+      <span className="hero-corner hero-corner--br" aria-hidden="true" />
+      <h1 className="hero-title">{children}</h1>
+    </div>
+  );
+}
+
 export default function Hero() {
   return (
-    <section
-      id="hero"
-      style={{
-        background: "var(--bg-primary)",
-        minHeight: "100vh",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        padding: "108px 20px 40px",
-      }}
-    >
-      {/* Outer card */}
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
-        style={{
-          width: "100%",
-          maxWidth: "984px",
-          background: "#0f0f0f",
-          border: "1px solid #222222",
-          borderRadius: "20px",
-          padding: "20px",
-          display: "grid",
-          gridTemplateColumns: "1fr 1fr",
-          gap: "16px",
-          minHeight: "591px",
-        }}
-      >
-        {/* ── LEFT COLUMN ── */}
-        <div style={{ display: "flex", flexDirection: "column", gap: "14px" }}>
-
-          {/* Card 1 — Greeting */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: 0.15 }}
-            style={cardStyle}
-          >
-            <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-              <span
-                style={{
-                  fontSize: "22px",
-                  background: "#2a2200",
-                  borderRadius: "50%",
-                  width: "42px",
-                  height: "42px",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  flexShrink: 0,
-                }}
-              >
-                🤚
-              </span>
-              <h2
-                style={{
-                  fontFamily: "var(--font-display)",
-                  fontSize: "18px",
-                  fontWeight: 200,
-                  color: "#ffffff",
-                  margin: 0,
-                  lineHeight: 1.2,
-                }}
-              >
-                Hello, I am Damilola Dada
-              </h2>
-            </div>
-          </motion.div>
-
-          {/* Card 2 — Headline */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: 0.25 }}
-            style={{ ...cardStyle, padding: "28px 24px" }}
-          >
-            <h1
-              style={{
-                fontFamily: "var(--font-display)",
-                fontSize: "32px",
-                fontWeight: 400,
-                color: "#cccccc",
-                margin: 0,
-                lineHeight: 1.1,
-                letterSpacing: "-0.02em",
-              }}
-            >
-              I Design the Future!
-            </h1>
-          </motion.div>
-
-          {/* Bottom row — description + button */}
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "14px", flex: 1 }}>
-
-            {/* Card 3 — Description */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.35 }}
-              style={{ ...cardStyle, display: "flex", alignItems: "flex-start" }}
-            >
-              <p
-                style={{
-                  fontFamily: "var(--font-body)",
-                  fontSize: "18.5px",
-                  color: "#cccccc",
-                  margin: 0,
-                  lineHeight: 1.65,
-                }}
-              >
-                Help you craft engaging user interfaces and experiences through UI/UX design.
-                Expertise in mobile &amp; web design, using Figma, Illustrator, Framer &amp; Cursor
-              </p>
-            </motion.div>
-
-            {/* Card 4 — CTAs */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.45 }}
-              style={{
-                ...cardStyle,
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "center",
-                gap: "12px",
-              }}
-            >
-              {/* Available for Work */}
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "8px",
-                  fontFamily: "var(--font-body)",
-                  fontSize: "14px",
-                  fontWeight: 500,
-                  color: "#cccccc",
-                }}
-              >
-                <span style={{ color: "#4ade80", fontSize: "18px", lineHeight: 1 }}>•</span>
-                Available for Work
-              </div>
-
-              {/* Let's Connect button */}
-              <a
-                href="#contact"
-                onClick={(e) => {
-                  e.preventDefault();
-                  document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
-                }}
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  fontFamily: "var(--font-body)",
-                  fontSize: "14px",
-                  fontWeight: 600,
-                  color: "#ffffff",
-                  background: "transparent",
-                  border: "1px solid #333333",
-                  borderRadius: "10px",
-                  padding: "12px 20px",
-                  textDecoration: "none",
-                  transition: "background 0.2s, border-color 0.2s",
-                  cursor: "pointer",
-                }}
-                onMouseEnter={(e) => { e.currentTarget.style.background = "#1e1e1e"; e.currentTarget.style.borderColor = "#444"; }}
-                onMouseLeave={(e) => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.borderColor = "#333333"; }}
-              >
-                Let's Connect!
-              </a>
-            </motion.div>
-          </div>
-        </div>
-
-        {/* ── RIGHT COLUMN — Photo ── */}
+    <>
+      {/* ── MOBILE LAYOUT ── */}
+      <section id="hero" className="hero-mobile">
         <motion.div
-          initial={{ opacity: 0, scale: 0.97 }}
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+          className="hero-greeting"
+        >
+          <span className="hero-greeting-emoji" aria-hidden="true">👋</span>
+          Hello, I am Damilola Michael
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
+        >
+          <TitleFrame>Product Designer</TitleFrame>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
+          className="hero-info-grid"
+        >
+          {infoItems.map(({ icon: Icon, label, value }) => (
+            <div key={label} className="hero-info-item">
+              <Icon className="hero-info-icon" aria-hidden="true" />
+              <span className="hero-info-label">{label}</span>
+              <span className="hero-info-value">{value}</span>
+            </div>
+          ))}
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.3, ease: "easeOut" }}
+          className="hero-status-box"
+        >
+          <span className="hero-status-dot" aria-hidden="true" />
+          Available for Work
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.35, ease: "easeOut" }}
+          className="hero-bio-box"
+        >
+          <p>
+            I help SaaS companies drive business results through impactful and
+            user-friendly experiences.
+          </p>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, scale: 0.98 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
+          transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
+          className="hero-photo-wrap"
+        >
+          <img src={heroPhoto} alt="Damilola Michael" />
+        </motion.div>
+      </section>
+
+      {/* ── DESKTOP LAYOUT ── */}
+      <section id="hero-desktop" className="hero-desktop">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
           style={{
-            borderRadius: "14px",
-            overflow: "hidden",
-            background: "#1a1a1a",
-            border: "1px solid #222",
-            minHeight: "551px",
+            width: "100%",
+            maxWidth: "984px",
+            background: "#0f0f0f",
+            border: "1px solid #222222",
+            borderRadius: "20px",
+            padding: "20px",
+            display: "grid",
+            gridTemplateColumns: "1fr 1fr",
+            gap: "16px",
+            minHeight: "591px",
           }}
         >
-          <img
-            src={heroPhoto}
-            alt="Damilola Dada"
+          <div style={{ display: "flex", flexDirection: "column", gap: "14px" }}>
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5, delay: 0.15 }}
+              style={cardStyle}
+            >
+              <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+                <span
+                  style={{
+                    fontSize: "22px",
+                    background: "#2a2200",
+                    borderRadius: "50%",
+                    width: "42px",
+                    height: "42px",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    flexShrink: 0,
+                  }}
+                >
+                  🤚
+                </span>
+                <h2
+                  style={{
+                    fontFamily: "var(--font-display)",
+                    fontSize: "18px",
+                    fontWeight: 200,
+                    color: "#ffffff",
+                    margin: 0,
+                    lineHeight: 1.2,
+                  }}
+                >
+                  Hello, I am Damilola Dada
+                </h2>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5, delay: 0.25 }}
+              style={{ ...cardStyle, padding: "28px 24px" }}
+            >
+              <h1
+                style={{
+                  fontFamily: "var(--font-display)",
+                  fontSize: "32px",
+                  fontWeight: 400,
+                  color: "#cccccc",
+                  margin: 0,
+                  lineHeight: 1.1,
+                  letterSpacing: "-0.02em",
+                }}
+              >
+                I Design the Future!
+              </h1>
+            </motion.div>
+
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "14px", flex: 1 }}>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.35 }}
+                style={{ ...cardStyle, display: "flex", alignItems: "flex-start" }}
+              >
+                <p
+                  style={{
+                    fontFamily: "var(--font-body)",
+                    fontSize: "18.5px",
+                    color: "#cccccc",
+                    margin: 0,
+                    lineHeight: 1.65,
+                  }}
+                >
+                  Help you craft engaging user interfaces and experiences through UI/UX design.
+                  Expertise in mobile &amp; web design, using Figma, Illustrator, Framer &amp; Cursor
+                </p>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.45 }}
+                style={{
+                  ...cardStyle,
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "center",
+                  gap: "12px",
+                }}
+              >
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "8px",
+                    fontFamily: "var(--font-body)",
+                    fontSize: "14px",
+                    fontWeight: 500,
+                    color: "#cccccc",
+                  }}
+                >
+                  <span style={{ color: "#4ade80", fontSize: "18px", lineHeight: 1 }}>•</span>
+                  Available for Work
+                </div>
+
+                <a
+                  href="#contact"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+                  }}
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    fontFamily: "var(--font-body)",
+                    fontSize: "14px",
+                    fontWeight: 600,
+                    color: "#ffffff",
+                    background: "transparent",
+                    border: "1px solid #333333",
+                    borderRadius: "10px",
+                    padding: "12px 20px",
+                    textDecoration: "none",
+                    transition: "background 0.2s, border-color 0.2s",
+                    cursor: "pointer",
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.background = "#1e1e1e";
+                    e.currentTarget.style.borderColor = "#444";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.background = "transparent";
+                    e.currentTarget.style.borderColor = "#333333";
+                  }}
+                >
+                  Let's Connect!
+                </a>
+              </motion.div>
+            </div>
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, scale: 0.97 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
             style={{
-              width: "100%",
-              height: "100%",
-              objectFit: "cover",
-              objectPosition: "center top",
-              display: "block",
+              borderRadius: "14px",
+              overflow: "hidden",
+              background: "#1a1a1a",
+              border: "1px solid #222",
+              minHeight: "551px",
             }}
-          />
+          >
+            <img
+              src={heroPhoto}
+              alt="Damilola Dada"
+              style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+                objectPosition: "center top",
+                display: "block",
+              }}
+            />
+          </motion.div>
         </motion.div>
-      </motion.div>
-    </section>
+      </section>
+    </>
   );
 }

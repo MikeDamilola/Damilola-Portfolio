@@ -1,57 +1,56 @@
+import { motion } from "framer-motion";
 import { experiences } from "../data/experience";
 import ExperienceCard from "./ExperienceCard";
+import "./CareerTimeline.css";
+
+function MobileExperienceCard({ data, index }) {
+  return (
+    <motion.article
+      className="career-card-mobile"
+      initial={{ opacity: 0, y: 16 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-30px" }}
+      transition={{ duration: 0.4, delay: index * 0.04, ease: "easeOut" }}
+    >
+      <span className="career-card-mobile__dot" aria-hidden="true" />
+
+      <div className="career-card-mobile__inner">
+        <div className="career-card-mobile__header">
+          <h3 className="career-card-mobile__role">
+            {data.company} ({data.type})
+          </h3>
+          <span className="career-card-mobile__period">{data.period}</span>
+        </div>
+
+        <ul className="career-card-mobile__bullets">
+          {data.bullets.map((point, i) => (
+            <li key={i}>{point}</li>
+          ))}
+        </ul>
+      </div>
+    </motion.article>
+  );
+}
 
 export default function CareerTimeline() {
   return (
-    <section
-      id="experience"
-      style={{
-        background: "#0a0a0a",
-        padding: "90px 24px 120px",
-      }}
-    >
-      {/* Section badge */}
-      <div style={{ display: "flex", justifyContent: "center", marginBottom: "72px" }}>
-        <span
-          style={{
-            background: "#1c1c1c",
-            color: "#ffffff",
-            padding: "10px 24px",
-            borderRadius: "999px",
-            fontSize: "13px",
-            fontFamily: "var(--font-display)",
-            fontWeight: 700,
-            letterSpacing: "0.08em",
-            border: "1px solid #2a2a2a",
-          }}
-        >
-          Career Timeline
-        </span>
+    <section id="experience" className="career-timeline">
+      <h2 className="career-timeline__title-mobile">Career Timeline</h2>
+
+      <div className="career-timeline__badge-wrap">
+        <span className="career-timeline__badge">Career Timeline</span>
       </div>
 
-      {/* Scroll container — tall enough for sticky to work per card */}
-      <div
-        style={{
-          position: "relative",
-          maxWidth: "740px",
-          margin: "0 auto",
-        }}
-      >
-        {/* Vertical timeline line */}
-        <div
-          style={{
-            position: "absolute",
-            left: "6px",
-            top: 0,
-            bottom: 0,
-            width: "1px",
-            background: "linear-gradient(to bottom, #333 0%, transparent 100%)",
-            pointerEvents: "none",
-          }}
-        />
+      <div className="career-timeline__mobile">
+        <div className="career-timeline__line" aria-hidden="true" />
+        {experiences.map((exp, index) => (
+          <MobileExperienceCard key={exp.id} data={exp} index={index} />
+        ))}
+      </div>
 
-        {/* Cards */}
-        <div style={{ paddingLeft: "40px" }}>
+      <div className="career-timeline__desktop">
+        <div className="career-timeline__desktop-line" aria-hidden="true" />
+        <div className="career-timeline__desktop-cards">
           {experiences.map((exp, index) => (
             <ExperienceCard
               key={exp.id}
