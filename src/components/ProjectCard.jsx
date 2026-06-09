@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function ProjectCard({ project }) {
   return (
     <article className="project-card-mobile">
@@ -20,14 +22,14 @@ export default function ProjectCard({ project }) {
           ))}
         </div>
 
-        <a
-          href={project.link}
+        <Link
+          to={project.link}
           className="project-card-mobile__btn"
           style={{ "--project-accent": project.accent }}
         >
           View Project
           <span className="project-card-mobile__btn-arrow" aria-hidden="true">↗</span>
-        </a>
+        </Link>
       </div>
     </article>
   );

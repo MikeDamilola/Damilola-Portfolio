@@ -1,11 +1,14 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { HiOutlineCloudArrowDown } from "react-icons/hi2";
+import resumePdf from "../assets/Dada_Damilola_Michael_CV_UIUX 2026.pdf";
+
+const RESUME_FILENAME = "Dada_Damilola_Michael_CV_UIUX_2026.pdf";
 
 const navLinks = [
   { label: "My Projects", href: "#projects" },
-  { label: "Career", href: "#tools" },
-  { label: "Experience", href: "#experience" },
+  { label: "Gallery", href: "#gallery" },
+  { label: "Career", href: "#experience" },
 ];
 
 export default function Navbar() {
@@ -95,7 +98,7 @@ export default function Navbar() {
               </a>
             ))}
 
-            <a href="/resume.pdf" download className="navbar-resume">
+            <a href={resumePdf} download={RESUME_FILENAME} className="navbar-resume">
               Download Resume
               <span className="navbar-resume-icon">
                 <HiOutlineCloudArrowDown size={15} color="#f97316" />
@@ -140,8 +143,8 @@ export default function Navbar() {
               </motion.a>
             ))}
             <motion.a
-              href="/resume.pdf"
-              download
+              href={resumePdf}
+              download={RESUME_FILENAME}
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: navLinks.length * 0.05 }}

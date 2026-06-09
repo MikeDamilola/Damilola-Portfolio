@@ -1,23 +1,14 @@
-import Navbar from "./components/Navbar";
-import Hero from "./components/Hero";
-import Tools from "./components/Tools";
-import Projects from "./components/Projects";
-import DesignGallery from "./components/DesignGallery";
-import CareerTimeline from "./components/CareerTimeline";
-import TrustedByProfessionals from "./components/TrustedByProfessionals";
-import Footer from "./components/Footer";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import HomePage from "./pages/HomePage";
+import See9jaProject from "./pages/See9jaProject";
 
 export default function App() {
   return (
-    <div style={{ background: "var(--bg-primary)", minHeight: "100vh" }}>
-      <Navbar />
-      <Hero />
-      <Tools />
-      <Projects />
-      <DesignGallery />
-      <CareerTimeline />
-      <TrustedByProfessionals />
-      <Footer />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/projects/see9ja" element={<See9jaProject />} />
+      </Routes>
+    </BrowserRouter>
   );
 }

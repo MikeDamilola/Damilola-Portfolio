@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 import Lenis from "lenis";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -25,7 +26,7 @@ const projects = [
     mobileTags: ["UX Design", "UI Design", "Prototype", "User Testing"],
     image: see9jaImg,
     accent: "#e8a882",
-    link: "#",
+    link: "/projects/see9ja",
   },
   {
     id: 2,
@@ -117,13 +118,13 @@ function DesktopProjectCard({ project }) {
           ))}
         </div>
 
-        <a
-          href={project.link}
+        <Link
+          to={project.link}
           className="projects-stack-card__btn"
           style={{ "--project-accent": project.accent }}
         >
           View Project <span className="projects-stack-card__btn-arrow" aria-hidden="true">↗</span>
-        </a>
+        </Link>
       </div>
     </div>
   );
