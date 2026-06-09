@@ -13,73 +13,84 @@ import "./Projects.css";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const MOBILE_TAGS = ["UI Design", "UX Design", "Mobile App", "Case Study"];
-
 const projects = [
   {
     id: 1,
-    title: "'Discover Nigeria Effortlessly: Your Ultimate Solution to Seamless Tourism Adventures!'",
+    name: "See9ja",
+    title:
+      '"Discover Nigeria Effortlessly: Your Ultimate Solution to Seamless Tourism Adventures!"',
     mobileTitle:
-      "Discover Nigeria Effortlessly: Your Ultimate Solution to Seamless Tourism Adventures.",
+      "Discover Nigeria Effortlessly: Your Ultimate Solution to Seamless Tourism Adventures!",
     tags: ["UX Design", "UI Design", "Prototype", "User Testing"],
-    mobileTags: MOBILE_TAGS,
+    mobileTags: ["UX Design", "UI Design", "Prototype", "User Testing"],
     image: see9jaImg,
-    bg: "#111a11",
+    accent: "#e8a882",
     link: "#",
   },
   {
     id: 2,
-    title: "'Reimagining Everyday Mobility in Africa: A Unified App for Transport Payments, Wallets, and Smart Ride Sharing Access'",
+    name: "No Cash",
+    title:
+      '"Reimagining Everyday Mobility in Africa: A Unified App for Transport Payments, Wallets, and Smart Ride Sharing Access"',
     mobileTitle:
-      "Reimagining Everyday Mobility in Africa: A Unified App for Transport Payments, Wallets, and Smart Ride-Sharing Access.",
+      "Reimagining Everyday Mobility in Africa: A Unified App for Transport Payments, Wallets, and Smart Ride Sharing Access",
     tags: ["UX Design", "UI Design", "Prototype", "User Testing"],
-    mobileTags: MOBILE_TAGS,
+    mobileTags: ["UX Design", "UI Design", "Prototype", "User Testing"],
     image: noCashImg,
-    bg: "#0f180f",
+    accent: "#ffb38e",
     link: "#",
   },
   {
     id: 3,
-    title: "'Redefining Hospitality: Designing an App to Connect Users with Restaurants, Hotels, and Events Across Africa'",
+    name: "Hightable",
+    title:
+      '"Redefining Hospitality: Designing an App to Connect Users with Restaurants, Hotels, and Events Across Africa"',
     mobileTitle:
-      "Redefining Hospitality: Designing an App to Connect Users with Restaurants, Hotels, and Events Across Africa.",
+      "Redefining Hospitality: Designing an App to Connect Users with Restaurants, Hotels, and Events Across Africa",
     tags: ["UX Design", "UI Design", "Prototype", "User Testing"],
-    mobileTags: MOBILE_TAGS,
+    mobileTags: ["UX Design", "UI Design", "Prototype", "User Testing"],
     image: hospitalityImg,
-    bg: "#1a1208",
+    accent: "#d48c5b",
     link: "#",
   },
   {
     id: 4,
-    title: "'Farmily: Revolutionizing Online Grocery Shopping and Fresh Farm Produce Delivery in Africa'",
+    name: "Farmily",
+    title:
+      '"Farmily: Revolutionizing Online Grocery Shopping and Fresh Farm Produce Delivery in Africa"',
     mobileTitle:
-      "Farming Fresh: Refining Online Grocery Shopping and Fresh Farm Produce Delivery in Africa.",
+      "Farmily: Revolutionizing Online Grocery Shopping and Fresh Farm Produce Delivery in Africa",
     tags: ["UX Design", "UI Design", "Prototype", "User Testing"],
-    mobileTags: MOBILE_TAGS,
+    mobileTags: ["UX Design", "UI Design", "Prototype", "User Testing"],
     image: farmIlyImg,
-    bg: "#0d1a0d",
+    accent: "#e07a5f",
     link: "#",
   },
   {
     id: 5,
-    title: "'Learnexo: An AI-Driven Learning Platform That Adapts to Every Learner, An Inclusive Learning Experience Designed Around You'",
+    name: "Learnexo",
+    title:
+      '"Learnexo: An AI-Driven Learning Platform That Adapts to Every Learner, An Inclusive Learning Experience Designed Around You"',
     mobileTitle:
-      "Learnwise: An AI-Driven Learning Platform That Adapts to Every Learner, An Inclusive Learning Experience Design for All Students.",
+      "Learnexo: An AI-Driven Learning Platform That Adapts to Every Learner, An Inclusive Learning Experience Designed Around You",
     tags: ["UX Design", "UI Design", "Prototype", "User Testing"],
-    mobileTags: MOBILE_TAGS,
+    mobileTags: ["UX Design", "UI Design", "Prototype", "User Testing"],
     image: learnexoImg,
-    bg: "#080f28",
+    accent: "#ffb088",
     link: "#",
   },
   {
     id: 6,
-    title: "'Powering Mobility Effortlessly: Your Ultimate Solution to Next-Generation EV Charging Stations!'",
+    name: "Energify",
+    title:
+      '"Powering Mobility Effortlessly: Your Ultimate Solution to Next-Generation EV Charging Stations!"',
     mobileTitle:
-      "Powering Mobility Effortlessly: Your Ultimate Solution for Next Generation EV Charging Stations.",
+      "Powering Mobility Effortlessly: Your Ultimate Solution to Next-Generation EV Charging Stations!",
     tags: ["UX Design", "UI Design", "Prototype", "User Testing"],
-    mobileTags: MOBILE_TAGS,
+    mobileTags: ["UX Design", "UI Design", "Prototype", "User Testing"],
     image: evChargingImg,
-    bg: "#081520",
+    accent: "#e8a882",
+    serifTitle: true,
     link: "#",
   },
 ];
@@ -87,12 +98,18 @@ const projects = [
 function DesktopProjectCard({ project }) {
   return (
     <div className="projects-stack-card">
-      <div className="projects-stack-card__image" style={{ background: project.bg }}>
-        <img src={project.image} alt={`Project ${project.id}`} />
+      <div className="projects-stack-card__image">
+        <img src={project.image} alt={project.name} />
       </div>
 
       <div className="projects-stack-card__content">
-        <p className="projects-stack-card__title">{project.title}</p>
+        <p
+          className={`projects-stack-card__title${
+            project.serifTitle ? " projects-stack-card__title--serif" : ""
+          }`}
+        >
+          {project.title}
+        </p>
 
         <div className="projects-stack-card__tags">
           {project.tags.map((tag) => (
@@ -100,8 +117,12 @@ function DesktopProjectCard({ project }) {
           ))}
         </div>
 
-        <a href={project.link} className="projects-stack-card__btn">
-          View Project <span aria-hidden="true">→</span>
+        <a
+          href={project.link}
+          className="projects-stack-card__btn"
+          style={{ "--project-accent": project.accent }}
+        >
+          View Project <span className="projects-stack-card__btn-arrow" aria-hidden="true">↗</span>
         </a>
       </div>
     </div>
