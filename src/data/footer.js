@@ -6,7 +6,7 @@ export const socialLinks = [
     id: 1,
     label: "LinkedIn",
     icon: FaLinkedinIn,
-    href: "https://www.linkedin.com/in/damilola-dada",
+    href: "https://www.linkedin.com/in/damilola-dada-a3003b1b6",
   },
   {
     id: 2,
@@ -18,6 +18,6 @@ export const socialLinks = [
     id: 3,
     label: "Behance",
     icon: FaBehance,
-    href: "https://www.behance.net/damiloladada",
+    href: "https://www.behance.net/damiloladada1",
   },
 ];
