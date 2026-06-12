@@ -65,7 +65,7 @@ const projects = [
     mobileTags: ["UX Design", "UI Design", "Prototype", "User Testing"],
     image: farmIlyImg,
     accent: "#e07a5f",
-    link: "#",
+    link: "/projects/farmily",
   },
   {
     id: 5,

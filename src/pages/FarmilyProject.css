@@ -1,0 +1,732 @@
+.farmily-page {
+  background: var(--bg-primary);
+  min-height: 100vh;
+}
+
+.farmily-content {
+  padding-top: 72px;
+}
+
+/* ── Hero: info strip ── */
+.farmily-hero__info {
+  background: #ffffff;
+  padding: 48px 20px 40px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.farmily-hero__info-inner {
+  max-width: 1024px;
+  margin: 0 auto;
+}
+
+.farmily-hero__meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 32px;
+}
+
+.farmily-hero__meta span {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 400;
+  color: #4b5563;
+}
+
+.farmily-hero__title {
+  font-family: var(--font-body);
+  font-size: clamp(22px, 4vw, 38px);
+  font-weight: 700;
+  color: #111827;
+  line-height: 1.35;
+  margin: 0 0 40px;
+  max-width: 900px;
+}
+
+.farmily-hero__details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  max-width: 480px;
+}
+
+.farmily-hero__detail-label {
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 10px;
+}
+
+.farmily-hero__detail-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.farmily-hero__detail-list li {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 400;
+  color: #374151;
+  line-height: 1.5;
+}
+
+/* ── Hero: full-width visual ── */
+.farmily-hero__visual {
+  background: #ffffff;
+  line-height: 0;
+  padding: 0 20px 48px;
+}
+
+.farmily-hero__visual-inner {
+  max-width: 1024px;
+  margin: 0 auto;
+}
+
+.farmily-hero__visual img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+}
+
+/* ── Project Scope & My Role ── */
+.farmily-scope-role {
+  background: #ffffff;
+  padding: 72px 20px;
+}
+
+.farmily-scope-role__inner {
+  max-width: 1024px;
+  margin: 0 auto;
+}
+
+.farmily-scope-role__row {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 48px;
+  align-items: start;
+  padding: 56px 0;
+}
+
+.farmily-scope-role__row:first-child {
+  padding-top: 0;
+}
+
+.farmily-scope-role__row:last-child {
+  padding-bottom: 0;
+}
+
+.farmily-scope-role__divider {
+  height: 1px;
+  background: #e5e7eb;
+}
+
+.farmily-scope-role__heading {
+  font-family: var(--font-body);
+  font-size: clamp(26px, 3.5vw, 36px);
+  font-weight: 700;
+  color: #111827;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.farmily-scope-role__text {
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 400;
+  color: #374151;
+  line-height: 1.75;
+  margin: 0;
+}
+
+/* ── User Research ── */
+.farmily-research {
+  background: #ddeede;
+  padding: 72px 20px 80px;
+}
+
+.farmily-research__inner {
+  max-width: 1024px;
+  margin: 0 auto;
+}
+
+.farmily-research__top {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 48px;
+  align-items: start;
+  margin-bottom: 64px;
+}
+
+.farmily-research__heading {
+  font-family: var(--font-body);
+  font-size: clamp(26px, 3.5vw, 36px);
+  font-weight: 700;
+  color: #111827;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.farmily-research__intro {
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 400;
+  color: #374151;
+  line-height: 1.75;
+  margin: 0;
+}
+
+.farmily-research__bottom {
+  display: grid;
+  grid-template-columns: 1fr 1px 1fr;
+  gap: 48px;
+  align-items: start;
+}
+
+.farmily-research__divider {
+  background: #111827;
+  width: 1px;
+  align-self: stretch;
+}
+
+.farmily-research__col-heading {
+  font-family: var(--font-body);
+  font-size: 18px;
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 24px;
+}
+
+.farmily-research__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.farmily-research__list li {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 400;
+  color: #374151;
+  line-height: 1.65;
+  padding-left: 20px;
+  position: relative;
+}
+
+.farmily-research__list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #111827;
+}
+
+/* ── Design Process ── */
+.farmily-design-process {
+  background: #ffffff;
+  padding: 72px 20px 80px;
+}
+
+.farmily-design-process__inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.farmily-design-process__heading {
+  font-family: var(--font-body);
+  font-size: clamp(24px, 3vw, 32px);
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 48px;
+}
+
+.farmily-design-process__diagram {
+  width: 100%;
+}
+
+.farmily-design-process__img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ── Problem Statement ── */
+.farmily-problem {
+  background: #ddeede;
+  padding: 64px 20px;
+}
+
+.farmily-problem__inner {
+  max-width: 1024px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.farmily-problem__heading {
+  font-family: var(--font-body);
+  font-size: clamp(26px, 3.5vw, 36px);
+  font-weight: 700;
+  color: #111827;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.farmily-problem__text {
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 400;
+  color: #374151;
+  line-height: 1.75;
+  margin: 0;
+}
+
+/* ── Persona ── */
+.farmily-persona {
+  background: #ffffff;
+  padding: 72px 20px 80px;
+}
+
+.farmily-persona__inner {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.farmily-persona__heading {
+  font-family: var(--font-body);
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 700;
+  color: #111827;
+  text-align: center;
+  margin: 0 0 48px;
+}
+
+.farmily-persona__card {
+  margin-bottom: 48px;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.farmily-persona__card:last-child {
+  margin-bottom: 0;
+}
+
+.farmily-persona__card-header {
+  background: #ddeede;
+  padding: 28px 32px;
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.farmily-persona__photo {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.farmily-persona__card-meta {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px 40px;
+  flex: 1;
+}
+
+.farmily-persona__meta-col {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.farmily-persona__meta-col p {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 400;
+  color: #111827;
+  margin: 0;
+}
+
+.farmily-persona__meta-col p span {
+  font-weight: 700;
+}
+
+.farmily-persona__card-body {
+  padding: 28px 32px 32px;
+  border: 1px solid #e5e7eb;
+  border-top: none;
+}
+
+.farmily-persona__section {
+  margin-bottom: 24px;
+}
+
+.farmily-persona__section:last-child {
+  margin-bottom: 0;
+}
+
+.farmily-persona__section h3 {
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 10px;
+}
+
+.farmily-persona__section p {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 400;
+  color: #374151;
+  line-height: 1.7;
+  margin: 0;
+}
+
+.farmily-persona__list {
+  margin: 0;
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.farmily-persona__list li {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 400;
+  color: #374151;
+  line-height: 1.65;
+}
+
+.farmily-persona__list--bulleted {
+  list-style: disc;
+}
+
+.farmily-persona__list--ordered {
+  list-style: decimal;
+}
+
+/* ── Topography / Design System ── */
+.farmily-typography {
+  background: #ddeede;
+  padding: 64px 20px 72px;
+}
+
+.farmily-typography__inner {
+  max-width: 1024px;
+  margin: 0 auto;
+}
+
+.farmily-typography__heading {
+  font-family: var(--font-body);
+  font-size: clamp(20px, 2.5vw, 26px);
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 32px;
+}
+
+.farmily-typography__font {
+  margin-bottom: 40px;
+}
+
+.farmily-typography__font-name {
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 10px;
+}
+
+.farmily-typography__weights {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.farmily-typography__weight--bold {
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.farmily-typography__weight--regular {
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 400;
+  color: #111827;
+}
+
+.farmily-typography__weight--light {
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 300;
+  color: #111827;
+}
+
+.farmily-typography__dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #111827;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.farmily-typography__swatches {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.farmily-typography__swatch {
+  width: 140px;
+  height: 120px;
+  border-radius: 12px;
+  flex-shrink: 0;
+}
+
+.farmily-typography__swatch--mint {
+  border: 1px solid #c5ddc8;
+}
+
+.farmily-typography__swatch--white {
+  border: 1px solid #e5e7eb;
+}
+
+/* ── Userflow ── */
+.farmily-userflow {
+  background: #ffffff;
+  padding: 72px 20px 80px;
+}
+
+.farmily-userflow__inner {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.farmily-userflow__heading {
+  font-family: var(--font-body);
+  font-size: clamp(20px, 2.5vw, 26px);
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 40px;
+}
+
+.farmily-userflow__diagram {
+  width: 100%;
+}
+
+.farmily-userflow__svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ── Design Screens ── */
+.farmily-design {
+  background: #f9fafb;
+  padding: 72px 20px 80px;
+}
+
+.farmily-design__inner {
+  max-width: 1024px;
+  margin: 0 auto;
+}
+
+.farmily-design__heading {
+  font-family: var(--font-body);
+  font-size: clamp(24px, 3vw, 32px);
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 48px;
+}
+
+.farmily-design__screens {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.farmily-design__screen {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.farmily-design__label {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 600;
+  color: #374151;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.farmily-design__img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
+}
+
+/* ── Thank You Footer ── */
+.farmily-thanks {
+  background: #ddeede;
+  padding: 72px 20px 80px;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+
+.farmily-thanks__dots {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 200px;
+  background-image: radial-gradient(circle, #a8d5b5 5px, transparent 5px);
+  background-size: 28px 28px;
+  opacity: 0.7;
+}
+
+.farmily-thanks__dots--left {
+  left: 0;
+}
+
+.farmily-thanks__dots--right {
+  right: 0;
+}
+
+.farmily-thanks__inner {
+  position: relative;
+  z-index: 1;
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.farmily-thanks__illustration {
+  width: 260px;
+  height: auto;
+}
+
+.farmily-thanks__illustration svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.farmily-thanks__heading {
+  font-family: var(--font-body);
+  font-size: clamp(20px, 3vw, 26px);
+  font-weight: 700;
+  color: #111827;
+  margin: 0;
+}
+
+.farmily-thanks__message {
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 400;
+  color: #1b7a40;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.farmily-thanks__icon {
+  color: #1b7a40;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .farmily-scope-role__row {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 40px 0;
+  }
+
+  .farmily-problem__inner {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .farmily-research__top {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    margin-bottom: 40px;
+  }
+
+  .farmily-research__bottom {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .farmily-research__divider {
+    width: 100%;
+    height: 1px;
+  }
+}
+
+@media (max-width: 640px) {
+  .farmily-persona__card-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .farmily-persona__card-meta {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .farmily-persona__card-body {
+    padding: 20px 16px 24px;
+  }
+}
+
+@media (max-width: 600px) {
+  .farmily-typography__swatch {
+    width: calc(33.33% - 12px);
+    height: 90px;
+  }
+
+  .farmily-hero__info {
+    padding: 36px 16px 32px;
+  }
+
+  .farmily-hero__visual {
+    padding: 0 16px 36px;
+  }
+
+  .farmily-hero__details {
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  .farmily-scope-role {
+    padding: 48px 16px;
+  }
+}
