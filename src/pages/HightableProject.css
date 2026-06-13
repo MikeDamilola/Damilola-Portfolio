@@ -1,0 +1,346 @@
+.hightable-page {
+  background: var(--bg-primary);
+  min-height: 100vh;
+}
+
+.hightable-content {
+  padding-top: 72px;
+}
+
+/* ── Hero: info strip ── */
+.hightable-hero__info {
+  background: #ffffff;
+  padding: 48px 20px 40px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.hightable-hero__info-inner {
+  max-width: 1024px;
+  margin: 0 auto;
+}
+
+.hightable-hero__meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 32px;
+}
+
+.hightable-hero__meta span {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 400;
+  color: #4b5563;
+}
+
+.hightable-hero__title {
+  font-family: var(--font-body);
+  font-size: clamp(22px, 4vw, 38px);
+  font-weight: 700;
+  color: #111827;
+  line-height: 1.35;
+  margin: 0 0 40px;
+  max-width: 900px;
+}
+
+.hightable-hero__details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  max-width: 480px;
+}
+
+.hightable-hero__detail-label {
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 10px;
+}
+
+.hightable-hero__detail-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.hightable-hero__detail-list li {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 400;
+  color: #374151;
+  line-height: 1.5;
+}
+
+/* ── Hero: full-width visual ── */
+.hightable-hero__visual {
+  background: #ffffff;
+  line-height: 0;
+  padding: 0 20px 48px;
+}
+
+.hightable-hero__visual-inner {
+  max-width: 1024px;
+  margin: 0 auto;
+}
+
+.hightable-hero__visual img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+}
+
+/* ────────────────────────────────────────────
+   Problem Statement
+──────────────────────────────────────────── */
+.ht-problem {
+  background: #ffffff;
+  padding: 80px 20px 88px;
+  border-top: 1px solid #f3f4f6;
+}
+
+.ht-problem__inner {
+  max-width: 760px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.ht-problem__heading {
+  font-family: var(--font-body);
+  font-size: clamp(26px, 3.5vw, 36px);
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 28px;
+  line-height: 1.2;
+}
+
+.ht-problem__text {
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 400;
+  color: #374151;
+  line-height: 1.8;
+  margin: 0;
+}
+
+/* ────────────────────────────────────────────
+   Project Goals
+──────────────────────────────────────────── */
+.ht-goals {
+  background: #f9fafb;
+  padding: 88px 20px;
+  border-top: 1px solid #f3f4f6;
+}
+
+.ht-goals__inner {
+  max-width: 1024px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+
+/* Shared illustration image */
+.ht-illus-img {
+  width: 100%;
+  max-width: 380px;
+  height: auto;
+  display: block;
+}
+
+.ht-goals__body {
+  text-align: center;
+}
+
+.ht-goals__heading {
+  font-family: var(--font-body);
+  font-size: clamp(26px, 3.5vw, 36px);
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 24px;
+  line-height: 1.2;
+}
+
+.ht-goals__text {
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 400;
+  color: #374151;
+  line-height: 1.8;
+  margin: 0;
+  text-align: center;
+}
+
+/* ────────────────────────────────────────────
+   Solution
+──────────────────────────────────────────── */
+.ht-solution {
+  background: #ffffff;
+  padding: 88px 20px;
+  border-top: 1px solid #f3f4f6;
+}
+
+.ht-solution__inner {
+  max-width: 1024px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+
+.ht-solution__heading {
+  font-family: var(--font-body);
+  font-size: clamp(26px, 3.5vw, 36px);
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 24px;
+  line-height: 1.2;
+}
+
+.ht-solution__text {
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 400;
+  color: #374151;
+  line-height: 1.8;
+  margin: 0;
+  text-align: center;
+}
+
+.ht-solution__illustration,
+.ht-goals__illustration {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ────────────────────────────────────────────
+   Target Audience
+──────────────────────────────────────────── */
+.ht-audience {
+  background: #f9fafb;
+  padding: 88px 20px;
+  border-top: 1px solid #f3f4f6;
+}
+
+.ht-audience__inner {
+  max-width: 1024px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+
+/* Illustration with watermark */
+.ht-audience__illustration {
+  position: relative;
+  height: 320px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ht-audience__watermark {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-body);
+  font-size: clamp(36px, 6vw, 64px);
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  color: #111827;
+  opacity: 0.06;
+  pointer-events: none;
+  user-select: none;
+  white-space: nowrap;
+}
+
+.ht-audience__illus-img {
+  position: relative;
+  z-index: 1;
+}
+
+.ht-audience__heading {
+  font-family: var(--font-body);
+  font-size: clamp(26px, 3.5vw, 36px);
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 24px;
+  line-height: 1.2;
+}
+
+.ht-audience__text {
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 400;
+  color: #374151;
+  line-height: 1.8;
+  margin: 0;
+  text-align: center;
+}
+
+/* ────────────────────────────────────────────
+   Responsive
+──────────────────────────────────────────── */
+@media (max-width: 767px) {
+  .hightable-hero__info {
+    padding: 36px 16px 32px;
+  }
+
+  .hightable-hero__title {
+    font-size: clamp(20px, 5.5vw, 28px);
+    margin-bottom: 28px;
+  }
+
+  .hightable-hero__details {
+    max-width: 100%;
+    gap: 24px;
+  }
+
+  .hightable-hero__visual {
+    padding: 0 16px 36px;
+  }
+
+  .ht-problem {
+    padding: 56px 16px 64px;
+  }
+
+  .ht-goals,
+  .ht-solution,
+  .ht-audience {
+    padding: 56px 16px;
+  }
+
+  .ht-goals__inner,
+  .ht-solution__inner,
+  .ht-audience__inner {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  /* Stack illustration below heading on mobile */
+  .ht-solution__inner {
+    direction: ltr;
+  }
+
+  .ht-audience__inner {
+    grid-template-columns: 1fr;
+  }
+
+  .ht-audience__illustration {
+    height: 240px;
+  }
+
+  .ht-audience__watermark {
+    font-size: clamp(28px, 8vw, 44px);
+  }
+}

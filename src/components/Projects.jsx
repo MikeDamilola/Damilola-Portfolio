@@ -52,7 +52,7 @@ const projects = [
     mobileTags: ["UX Design", "UI Design", "Prototype", "User Testing"],
     image: hospitalityImg,
     accent: "#d48c5b",
-    link: "#",
+    link: "/projects/hightable",
   },
   {
     id: 4,
