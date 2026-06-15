@@ -93,6 +93,54 @@ h1, h2, h3, h4 {
   }
 }
 
+/* ── Project back bar ── */
+.project-back-bar {
+  position: fixed;
+  top: 72px;
+  left: 0;
+  right: 0;
+  z-index: 49;
+  height: 44px;
+  background: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.project-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 500;
+  color: #374151;
+  text-decoration: none;
+  transition: color 0.18s ease;
+}
+
+.project-back-link:hover {
+  color: #111827;
+}
+
+.project-back-arrow {
+  font-size: 16px;
+  flex-shrink: 0;
+  transition: transform 0.18s ease;
+}
+
+.project-back-link:hover .project-back-arrow {
+  transform: translateX(-3px);
+}
+
+@media (min-width: 768px) {
+  .project-back-bar {
+    top: 88px;
+    padding: 0 40px;
+  }
+}
+
 /* ── Navbar responsive ── */
 .navbar {
   position: fixed;

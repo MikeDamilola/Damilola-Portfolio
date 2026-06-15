@@ -64,7 +64,13 @@
 }
 
 .nocash-content {
-  padding-top: 72px;
+  padding-top: 116px;
+}
+
+@media (min-width: 768px) {
+  .nocash-content {
+    padding-top: 132px;
+  }
 }
 
 /* ── Shared brand pill (replaces logo) ── */

@@ -4,7 +4,13 @@
 }
 
 .hightable-content {
-  padding-top: 72px;
+  padding-top: 116px;
+}
+
+@media (min-width: 768px) {
+  .hightable-content {
+    padding-top: 132px;
+  }
 }
 
 /* ── Hero: info strip ── */
