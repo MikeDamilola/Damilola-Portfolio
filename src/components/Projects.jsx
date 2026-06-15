@@ -39,7 +39,7 @@ const projects = [
     mobileTags: ["UX Design", "UI Design", "Prototype", "User Testing"],
     image: noCashImg,
     accent: "#ffb38e",
-    link: "#",
+    link: "/projects/nocash",
   },
   {
     id: 3,
@@ -78,7 +78,7 @@ const projects = [
     mobileTags: ["UX Design", "UI Design", "Prototype", "User Testing"],
     image: learnexoImg,
     accent: "#ffb088",
-    link: "#",
+    link: "/projects/learnexo",
   },
   {
     id: 6,
@@ -92,7 +92,7 @@ const projects = [
     image: evChargingImg,
     accent: "#e8a882",
     serifTitle: true,
-    link: "#",
+    link: "/projects/energify",
   },
 ];
 

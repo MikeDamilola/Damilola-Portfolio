@@ -1,0 +1,176 @@
+/* ─────────────────────────────────────────────
+   Learnexo Project Page  (prefix: lx-)
+   Brand accent: #4F46E5 (indigo/blue-purple)
+───────────────────────────────────────────── */
+
+.learnexo-page {
+  background: var(--bg-primary);
+  min-height: 100vh;
+}
+
+.learnexo-content {
+  padding-top: 72px;
+}
+
+/* ────────────────────────────────────────────
+   Hero
+──────────────────────────────────────────── */
+.lx-hero__info {
+  background: #ffffff;
+  padding: 48px 20px 40px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.lx-hero__info-inner {
+  max-width: 1024px;
+  margin: 0 auto;
+}
+
+.lx-hero__meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 32px;
+}
+
+.lx-hero__meta span {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 400;
+  color: #4b5563;
+}
+
+.lx-hero__title {
+  font-family: var(--font-body);
+  font-size: clamp(22px, 4vw, 38px);
+  font-weight: 700;
+  color: #111827;
+  line-height: 1.35;
+  margin: 0 0 40px;
+  max-width: 900px;
+}
+
+.lx-hero__details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  max-width: 480px;
+}
+
+.lx-hero__detail-label {
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 10px;
+}
+
+.lx-hero__detail-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.lx-hero__detail-list li {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 400;
+  color: #374151;
+  line-height: 1.5;
+}
+
+.lx-hero__visual {
+  background: #ffffff;
+  line-height: 0;
+  padding: 0 20px 48px;
+}
+
+.lx-hero__visual-inner {
+  max-width: 1024px;
+  margin: 0 auto;
+}
+
+.lx-hero__visual img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+}
+
+@media (max-width: 767px) {
+  .lx-hero__info {
+    padding: 36px 16px 32px;
+  }
+
+  .lx-hero__title {
+    font-size: clamp(20px, 5.5vw, 28px);
+    margin-bottom: 28px;
+  }
+
+  .lx-hero__details {
+    max-width: 100%;
+    gap: 24px;
+  }
+
+  .lx-hero__visual {
+    padding: 0 16px 36px;
+  }
+}
+
+/* ────────────────────────────────────────────
+   In Progress
+──────────────────────────────────────────── */
+.lx-inprogress {
+  background: #ffffff;
+  padding: 96px 20px 112px;
+  border-top: 1px solid #f3f4f6;
+}
+
+.lx-inprogress__inner {
+  max-width: 560px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.lx-inprogress__illustration {
+  width: 100%;
+  max-width: 420px;
+  height: auto;
+  display: block;
+  margin-bottom: 40px;
+}
+
+.lx-inprogress__heading {
+  font-family: var(--font-body);
+  font-size: clamp(24px, 3.5vw, 34px);
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 16px;
+  line-height: 1.2;
+}
+
+.lx-inprogress__text {
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 400;
+  color: #6b7280;
+  line-height: 1.8;
+  margin: 0;
+  max-width: 440px;
+}
+
+@media (max-width: 640px) {
+  .lx-inprogress {
+    padding: 64px 16px 80px;
+  }
+
+  .lx-inprogress__illustration {
+    max-width: 300px;
+  }
+}
